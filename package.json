@@ -34,6 +34,8 @@
     "immutable": "^3.8.1",
     "jest": "18.1.0",
     "json-loader": "0.5.4",
+    "lodash": "^4.17.4",
+    "lodash-fp": "^0.10.4",
     "node-sass": "^4.5.0",
     "object-assign": "4.1.1",
     "postcss-loader": "1.2.2",
@@ -97,5 +99,6 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "proxy": "https://api.douban.com"
 }

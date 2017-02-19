@@ -6,12 +6,13 @@ import Header from '../components/Header'
  PlainRoute objects to build route definitions.   */
 
 export const createRoutes = (store) => ({
-  path: '/',
-  component: ({children})=>(<div>{children}</div>),
-  indexRoute:  {component: Header},
-    childRoutes: [
-        require('./act').default(store)
-    ]
+	path: '/',
+	component: ({children}) => (<div id="roo">{children}</div>),
+	indexRoute: {component: Header},
+	childRoutes: [
+		require('./act').default(store),
+		require('./canvas').default(store)
+	]
 })
 
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically

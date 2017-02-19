@@ -3,6 +3,13 @@ import {injectReducer} from '../../../store/reducers'
 import {reducer,handleC} from './action';
 
 class List extends Component {
+
+	componentWillMount() {
+		fetch('/v2/movie/in_theaters')
+			.then(res => res.json()
+			.then(res => console.log(res.title)));
+	}
+
     render() {
         const props = this.props;
         return (

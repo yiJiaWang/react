@@ -1,0 +1,47 @@
+/**
+ * Created by Administrator on 2/18.
+ */
+import _ from 'lodash'
+import config from '../../config'
+
+export default class Square {
+
+	constructor({l = config.l, style = "black", x = 0, y = 0}={}) {
+		this.style = style
+		this.x = x
+		this.y = y
+		this.l = l
+	}
+
+	run() {
+		const self = this;
+		let {x, y, style, l} = self
+		self.y = y + l
+		return self;
+	}
+
+	draw(context) {
+		const self = this;
+		const {x, y, style, l} = self
+		context.fillStyle = style
+		context.fillRect(x, y, l, l);
+		return self;
+	}
+
+	justify(high) {
+		const self = this;
+		const {x, y, style, l} = self
+		var res = {}
+		res.flag = y >= high[x]
+		return res
+	}
+
+	changeHigh(high) {
+		const self = this;
+		const {x, y, style, l} = self
+		high[x] = _.min([high[x], y - l])
+		!high.stop && high[x] <= -l ? high.stop = true : 0
+		return high;
+	}
+
+}

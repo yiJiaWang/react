@@ -3,6 +3,7 @@ import {Provider} from 'react-redux';
 import {browserHistory, Router} from 'react-router';
 import createRoutes from './routes/index';
 import createStore from './store/createStore'
+import './style/common.css'
 
 const initialState = window.___INITIAL_STATE__
 const store = createStore(initialState)
