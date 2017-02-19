@@ -51,4 +51,22 @@ export default class Fours {
 		return res
 	}
 
+	move(type, high) {
+		const {fourArr} = this
+		switch (type) {
+			case 37: // left
+				if (_.some(fourArr, e => e.x == 0)) break
+				_.forEach(fourArr, e => e.moveLeft())
+				break
+			case 39: // right
+				if (_.some(fourArr, e => e.x == config.width - config.l)) break
+				_.forEach(fourArr, e => e.moveRight())
+				break
+			case 38: // up
+			case 40: // down
+			default:
+				return
+		}
+	}
+
 }

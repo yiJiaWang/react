@@ -44,4 +44,13 @@ export default class Square {
 		return high;
 	}
 
+	moveLeft() {
+		const {x, l} = this
+		this.x = x - l
+	}
+	moveRight() {
+		const {x, l} = this
+		this.x = x + l
+	}
+
 }

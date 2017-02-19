@@ -9,13 +9,6 @@ class Canvas extends Component {
 
 	componentDidMount() {
 		const move = animate().move;
-		function keyUp(e) {
-			var currKey=0,e=e||event;
-			currKey=e.keyCode||e.which||e.charCode;
-			// console.log(currKey);
-			move(currKey);
-		}
-		document.onkeyup = keyUp;
 	}
 
 	componentWillMount() {

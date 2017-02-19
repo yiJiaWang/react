@@ -34,6 +34,13 @@ export default class box {
 		self._init();
 		self.high = self._initHigh()
 		self.stop = false
+		function keyUp(e) {
+			var currKey=0,e=e||event;
+			currKey=e.keyCode||e.which||e.charCode;
+			self.move(currKey);
+		}
+		document.onkeyup = keyUp;
+
 	}
 
 	run() {
@@ -56,7 +63,7 @@ export default class box {
 	}
 
 	move(type) {
-		debugger
-
+		_.last(this.things).move(type, this.high)
 	}
+
 }
