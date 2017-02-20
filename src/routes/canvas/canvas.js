@@ -8,7 +8,7 @@ import animate from './animate'
 class Canvas extends Component {
 
 	componentDidMount() {
-		const move = animate().move;
+		animate();
 	}
 
 	componentWillMount() {

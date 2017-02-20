@@ -28,11 +28,12 @@ export default class Square {
 		return self;
 	}
 
-	justify(high) {
+	justify(walls) {
 		const self = this;
 		const {x, y, style, l} = self
-		var res = {}
-		res.flag = y >= high[x]
+        const res = {}
+        res.flag = !!walls[x][y+l]
+        res.flag ? res.stop = y <= -l : 0
 		return res
 	}
 
