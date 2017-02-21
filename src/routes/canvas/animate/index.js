@@ -13,7 +13,7 @@ const run = obj => obj.run()
 const draw = _.curry((context, obj) => {
 	return obj.draw(context)
 })
-const run_draw = context => _.flowRight(draw(context))
+const run_draw = context => _.flowRight(run, draw(context))
 const animate = _.curry((context, box) => {
 		box.stop ? '' :
 		setTimeout(x => {

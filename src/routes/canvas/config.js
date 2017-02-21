@@ -6,5 +6,5 @@ export default {
 	width: 330,
 	height: 540,
 	l: 30,
-	hz: 100,
+	hz: 800,
 };

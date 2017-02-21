@@ -32,7 +32,7 @@ const _getWall = res => things => {
 export default class box {
 
     _init() {
-        this.things.push(new fours({type: 7}));
+        this.things.push(new fours({type: _.random(1,7)}));
     }
 
     _initStop() {
@@ -51,6 +51,9 @@ export default class box {
                 return res
             }, {xx: [], miny: []})
             return _.map(_.filter(things, (e, i) => !_.includes(_just.xx, i)), e => {
+                _.map(_just.miny, miny => {
+                    e.y < miny ? e.run() : 0
+                })
                 return e
             })
         }
