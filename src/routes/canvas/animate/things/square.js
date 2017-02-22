@@ -21,10 +21,15 @@ export default class Square {
 	}
 
 	draw(context) {
-		const self = this;
-		const {x, y, style, l} = self
+	    const _dd = 4
+        const self = this;
+        const {x, y, style, l} = self
+	    const _drawOne = _ => {
+            context.strokeRect(x+1, y+1, l-2, l-2);
+            context.fillRect(x+_dd, y+_dd, l-2*_dd, l-2*_dd);
+        }
 		context.fillStyle = style
-		context.fillRect(x, y, l, l);
+        _drawOne();
 		return self;
 	}
 

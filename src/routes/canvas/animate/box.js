@@ -85,7 +85,7 @@ export default class box {
             currKey = _e.keyCode || _e.which || _e.charCode;
             self.move(currKey);
         }
-        document.onkeyup = keyUp;
+        document.onkeydown = keyUp;
     }
 
     run() {
