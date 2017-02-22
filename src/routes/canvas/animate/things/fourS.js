@@ -12,7 +12,6 @@ const initF = type => (x, y) => dir => {
     return typeShape[type][dir].map(e => new Square({x: x + e[0] * l, y: y + e[1] * l}))
 }
 
-console.log(wid);
 export default class Fours {
 
     constructor({type = 1, dir = 0, l = config.l, style = "black", x = wid * l, y = -l}={}) {
@@ -43,7 +42,9 @@ export default class Fours {
     justify(walls) {
         let res = {}
         _.forEach(this.fourArr, e => {
-            !res.flag ? res = e.justify(walls) : 0
+            if (!res.flag) {
+                res = e.justify(walls)
+            }
         })
         return res
     }
@@ -52,12 +53,12 @@ export default class Fours {
         const {fourArr, x, y, dir} = this
         switch (type) {
             case 37: // left
-                if (_.some(fourArr, e => walls[e.x - config.l][e.y])) break
+                if (_.some(fourArr, e => walls[e.x - config.l][e.y]) || y < 0) break
                 _.forEach(fourArr, e => e.moveLeft())
                 this.x = x - l
                 break
             case 39: // right
-                if (_.some(fourArr, e => walls[e.x + config.l][e.y])) break
+                if (_.some(fourArr, e => walls[e.x + config.l][e.y]) || y < 0) break
                 _.forEach(fourArr, e => e.moveRight())
                 this.x = x + l
                 break
@@ -67,6 +68,7 @@ export default class Fours {
                 if (_.some(_fourArr, e => walls[e.x][e.y])) break
                 this.fourArr = _fourArr
                 this.dir = _dir
+                break
             case 40: // down
             default:
                 return

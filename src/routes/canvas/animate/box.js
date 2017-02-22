@@ -8,12 +8,11 @@ import config from '../config'
 // 生成阻挡物
 const _getWall0 = config => {
     const {width, height, l} = config
-    const arr = []
     const res = {}
-    const __ = width => arr => width == 0 ? [0].concat(arr) : __(width - l)([width].concat(arr))
+    const __ = width => arr => width === 0 ? [0].concat(arr) : __(width - l)([width].concat(arr))
     const arrWidth = __(width)([]);
     const arrHeight = __(height)([]);
-    res[-l] = {},
+    res[-l] = {};
     _.map(arrWidth, e => {
         res[e] = {}
         res[e][height] = 1
@@ -45,14 +44,17 @@ export default class box {
                 const _obj = res[e.y] || []
                 _obj.push(i)
                 res[e.y] = _obj
-                _obj.length >= num ?
-                    (res.xx = res.xx.concat(_obj), res.miny.push(e.y))
-                    : 0
+                if (_obj.length >= num) {
+                    res.xx = res.xx.concat(_obj);
+                    res.miny.push(e.y)
+                }
                 return res
             }, {xx: [], miny: []})
             return _.map(_.filter(things, (e, i) => !_.includes(_just.xx, i)), e => {
                 _.map(_just.miny, miny => {
-                    e.y < miny ? e.run() : 0
+                    if (e.y < miny) {
+                        e.run()
+                    }
                 })
                 return e
             })
@@ -62,7 +64,7 @@ export default class box {
     }
 
     _initHigh() {
-        const __ = width => arr => width == 0 ? [0].concat(arr) : __(width - config.l)([width].concat(arr))
+        const __ = width => arr => width === 0 ? [0].concat(arr) : __(width - config.l)([width].concat(arr))
         const arr = __(config.width - config.l)([]);
         var high = {}
         _.map(arr, e => {
@@ -79,8 +81,8 @@ export default class box {
         self.stop = false
         self.walls = _getWall0(config)
         function keyUp(e) {
-            var currKey = 0, e = e || event;
-            currKey = e.keyCode || e.which || e.charCode;
+            var currKey = 0, _e = e || event;
+            currKey = _e.keyCode || _e.which || _e.charCode;
             self.move(currKey);
         }
         document.onkeyup = keyUp;
@@ -92,7 +94,16 @@ export default class box {
         let thing = things[things.length - 1];
         const walls = _getWall(self.walls)(_.dropRight(things));
         const res = thing.justify(walls);
-        res.flag ? res.stop ? self.stop = true : (self._initStop(), self.high = res.high) : thing.run();
+        if (res.flag) {
+            if (res.stop) {
+                self.stop = true;
+            } else {
+                self._initStop();
+                self.high = res.high;
+            }
+        } else {
+            thing.run();
+        }
         return self;
     }
 
@@ -104,7 +115,7 @@ export default class box {
     }
 
     move(type) {
-        if (type == 40) {
+        if (type === 40) {
             this.run();
             return
         }

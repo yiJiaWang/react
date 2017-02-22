@@ -15,7 +15,7 @@ export default class Square {
 
 	run() {
 		const self = this;
-		let {x, y, style, l} = self
+		let {y, l} = self
 		self.y = y + l
 		return self;
 	}
@@ -30,18 +30,22 @@ export default class Square {
 
 	justify(walls) {
 		const self = this;
-		const {x, y, style, l} = self
+		const {x, y, l} = self
         const res = {}
         res.flag = !!walls[x][y+l]
-        res.flag ? res.stop = y <= -l : 0
+        if (res.flag) {
+            res.stop = y <= -l
+        }
 		return res
 	}
 
 	changeHigh(high) {
 		const self = this;
-		const {x, y, style, l} = self
+		const {x, y, l} = self
 		high[x] = _.min([high[x], y - l])
-		!high.stop && high[x] <= -l ? high.stop = true : 0
+        if (!high.stop && high[x] <= -l) {
+            high.stop = true
+        }
 		return high;
 	}
 
