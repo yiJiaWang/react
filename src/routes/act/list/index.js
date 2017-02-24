@@ -1,19 +1,38 @@
 import React, {Component} from 'react'
 import {injectReducer} from '../../../store/reducers'
-import {reducer,handleC} from './action';
+import {reducer, handleC} from './action';
+import AppBar from 'material-ui/AppBar';
+import * as api from '../api'
 
 class List extends Component {
 
-	componentWillMount() {
-		fetch('/v2/movie/in_theaters')
-			.then(res => res.json()
-			.then(res => console.log(res.title)));
-	}
+    propTypes: {
+        getList: React.PropTypes.func.isRequired,
+        actList: React.PropTypes.object
+    }
+
+    componentWillMount() {
+        const props = this.props;
+        props.getList();
+    }
 
     render() {
         const props = this.props;
+        const {actList} = props
         return (
-            <div onClick={props.increment}>{props.actList.get('num')}</div>
+            <div>
+                {/*<div onClick={props.increment}>{props.actList.get('num')}</div>*/}
+
+                <AppBar
+                    title="Title"
+                    iconClassNameRight="muidocs-icon-navigation-expand-more"
+                />
+                {actList.get('theaterList').toJSON().map(e => {
+                    return (
+                        <li key={e.id}>{e.title}</li>
+                    )
+                })}
+            </div>
         )
     }
 }
