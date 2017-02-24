@@ -20,7 +20,7 @@ const actions = createActions({
         [INCREMENT]: (num = 1) => (num),
         [GET_LIST]: async(city = '武汉') => {
             const data = await api.in_theaters(
-                {method:'POST', body: JSON.stringify({city})}
+                {method:'get', body: JSON.stringify({city})}
                 )
             return data.subjects
         }
