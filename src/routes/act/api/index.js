@@ -13,4 +13,10 @@ export const get = async (url, option) => {
     }
 }
 
-export const in_theaters = option => get('/v2/movie/in_theaters', option)
+import queryString from 'query-string'
+
+export const in_theaters = (data, option) => {
+	let _param;
+	if (data) _param = '?'+queryString.stringify(data);
+	return get('/v2/movie/in_theaters' + _param, option)
+}

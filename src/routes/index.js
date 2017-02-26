@@ -1,14 +1,14 @@
 // We only need to import the modules necessary for initial render
-import React from 'react';
-import Header from '../components/Header'
+import Home from '../components/Home'
+import Layout from '../components/Layout'
 
 /*  Note: Instead of using JSX, we recommend using react-router
  PlainRoute objects to build route definitions.   */
 
 export const createRoutes = (store) => ({
 	path: '/',
-	component: ({children}) => (<div id="roo">{children}</div>),
-	indexRoute: {component: Header},
+	component: Layout,
+	indexRoute: Home,
 	childRoutes: [
 		require('./act').default(store),
 		require('./canvas').default(store)

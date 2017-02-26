@@ -1,43 +1,56 @@
 import React, {Component} from 'react'
 import {injectReducer} from '../../../store/reducers'
 import {reducer, handleC} from './action';
-import AppBar from 'material-ui/AppBar';
-import * as api from '../api'
+import {hasBack} from '../../../components/Head'
+import style from './style.scss'
+import {box, list} from './model'
+import {List, ListItem} from 'material-ui/List';
 
-class List extends Component {
+class FilmList extends Component {
 
-    propTypes: {
-        getList: React.PropTypes.func.isRequired,
-        actList: React.PropTypes.object
-    }
+	propTypes: {
+		getList: React.PropTypes.func.isRequired,
+		actList: React.PropTypes.object
+	}
 
-    componentWillMount() {
-        const props = this.props;
-        props.getList();
-    }
+	constructor(props) {
+		super(props);
+		this.state = {showModel: 'list'};
+		this._handleShowModel = this._handleShowModel.bind(this)
+	}
 
-    render() {
-        const props = this.props;
-        const {actList} = props
-        return (
-            <div>
-                {/*<div onClick={props.increment}>{props.actList.get('num')}</div>*/}
+	componentWillMount() {
+		const props = this.props;
+		props.getList();
+	}
 
-                <AppBar
-                    title="Title"
-                    iconClassNameRight="muidocs-icon-navigation-expand-more"
-                />
-                {actList.get('theaterList').toJSON().map(e => {
-                    return (
-                        <li key={e.id}>{e.title}</li>
-                    )
-                })}
-            </div>
-        )
-    }
+	_handleShowModel(){
+		const _self = this;
+		_self.setState({showModel: '123'})
+	}
+
+	render() {
+		const props = this.props;
+		const {actList} = props,
+			{showModel} = this.state
+		return (
+			<div>
+				{hasBack({title: '电影列表'})}
+				<List style={{paddingTop: 64}} className={showModel==='list'?style.mainBoxRed:''} onClick={this._handleShowModel}>
+					{actList.get('theaterList').toJSON().map((e,i) => {
+						return (
+							<ListItem key={e.id}>
+								{list({i, ...e})}
+							</ListItem>
+						)
+					})}
+				</List>
+			</div>
+		)
+	}
 }
 
 export default store => {
-    injectReducer(store, {key: 'actList', reducer})
-    return handleC(List)
+	injectReducer(store, {key: 'actList', reducer})
+	return handleC(FilmList)
 }

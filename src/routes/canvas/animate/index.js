@@ -33,7 +33,7 @@ function init() {
     canvas.width = config.width;
     canvas.height = config.height;
     const box = new Box();
-    animate(context)(box);
+    setTimeout(x => animate(context)(box), 2000)
     return box
 }
 

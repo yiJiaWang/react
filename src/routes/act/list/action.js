@@ -19,9 +19,7 @@ const initState = Immutable.fromJS({
 const actions = createActions({
         [INCREMENT]: (num = 1) => (num),
         [GET_LIST]: async(city = '武汉') => {
-            const data = await api.in_theaters(
-                {method:'get', body: JSON.stringify({city})}
-                )
+            const data = await api.in_theaters({city})
             return data.subjects
         }
     },
@@ -39,7 +37,8 @@ export const reducer = handleActions({
 
 }, initState);
 
-const mapStateToProps = state =>
-    ({actList: state.get('actList')})
+const mapStateToProps = state => {
+	return ({actList: state.get('actList')})
+}
 
 export const handleC = c => connect(mapStateToProps, actions)(c)

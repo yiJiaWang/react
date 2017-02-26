@@ -1,10 +1,10 @@
 // import { combineReducers } from 'redux'
 import {combineReducers } from 'redux-immutable'
-import locationReducer from './location'
+import {reducer_0} from './globalAction'
 
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
-    location: locationReducer,
+  	reducer_0,
     ...asyncReducers
   })
 }

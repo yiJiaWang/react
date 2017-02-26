@@ -20,7 +20,6 @@ const _getWall0 = config => {
     _.map(arrHeight, e => ( res[-l][e] = 1));
     _.map(arrHeight, e => res[width][e] = 1);
     return res
-
 }
 const _getWall = res => things => {
     const _res = _.cloneDeep(res)
