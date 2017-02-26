@@ -6,8 +6,7 @@ import createStore from './store/createStore'
 import './style/common.css'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-const initialState = window.___INITIAL_STATE__
-const store = createStore(initialState)
+const store = createStore()
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941

@@ -53,7 +53,7 @@ module.exports = {
   // In production, we only want to load the polyfills and the app code.
   entry: [
     require.resolve('./polyfills'),
-    paths.appIndexJs
+    paths.appIndexJs_pro
   ],
   output: {
     // The build folder.
@@ -110,8 +110,9 @@ module.exports = {
           /\.(js|jsx)$/,
           /\.css$/,
           /\.json$/,
-          /\.svg$/
-        ],
+          /\.svg$/,
+					/\.(scss|sass)$/
+				],
         loader: 'url',
         query: {
           limit: 10000,
@@ -141,12 +142,21 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract(
           'style',
-          'css?importLoaders=1!postcss',
+          'css?importLoaders=1&modules&sourceMap&localIdentName=[name]_[local]_[hash:base64:5]',
           extractTextPluginOptions
         )
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
-      // JSON is not enabled by default in Webpack but both Node and Browserify
+			{
+				test: /\.(scss|sass)$/,
+				loader: ExtractTextPlugin.extract(
+					'style',
+					'css?importLoaders=1&modules&sourceMap&localIdentName=[name]_[local]_[hash:base64:5]',
+					'sass?sourceMap',
+					extractTextPluginOptions
+				),
+			},
+			// JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
       {
         test: /\.json$/,

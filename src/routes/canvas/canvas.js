@@ -5,16 +5,11 @@ import React, {Component} from 'react'
 import style from './style.scss'
 import animate from './animate'
 import {hasBack} from '../../components/Head'
-import IconButton from 'material-ui/IconButton';
 import FlatButton from 'material-ui/FlatButton';
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back'
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-downward'
 import ArrowForward from 'material-ui/svg-icons/navigation/arrow-forward'
 import RotateRight from 'material-ui/svg-icons/image/rotate-right'
-
-const move = type => e => {
-	return this.box.move(type);
-}
 
 class Canvas extends Component {
 

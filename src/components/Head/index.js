@@ -8,6 +8,7 @@ import style from './style.scss'
 
 const def = (option = {title:'title'}) => (
 	<AppBar
+		className={style.head}
 		style={{position: 'fixed'}}
 		{...option}
 	/>
