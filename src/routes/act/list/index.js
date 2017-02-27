@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 import {handleClassForAsync} from '../../../store/reducers'
-import * as action from './action';
-import {hasBack} from '../../../components/Head'
 import './style.scss'
+import * as action from './action';
+import {api_const} from './action';
+import {hasBack} from '../../../components/Head'
+import HeadRight from './HeadRight'
 import {box, list} from './model'
 import {List, ListItem} from 'material-ui/List';
-import HeadRight from './HeadRight'
+import _ from 'lodash'
 
 class FilmList extends Component {
 
@@ -23,10 +25,12 @@ class FilmList extends Component {
   render() {
     const props = this.props,
       {movieList, actions} = props,
-      {showModel, title} = movieList.toJSON();
+      {showModel, title} = movieList.toJSON()
+
+		const menuList = _.map(api_const, e => ({text: e.title, event: actions[e.method]}))
     return (
       <div>
-        {hasBack({title, iconElementRight: <HeadRight menuList={[{text: '123', event: actions.getComingSoonList}]}/>})}
+        {hasBack({title, iconElementRight: <HeadRight menuList={menuList} />})}
         <List style={{paddingTop: 64}} styleName=''>
           {movieList.get('list').toJSON().map((e, i) => {
             return (

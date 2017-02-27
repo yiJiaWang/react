@@ -16,12 +16,13 @@ const def = (option = {title:'title'}) => (
 
 export default def
 
+import { browserHistory } from 'react-router'
 import IconButton from 'material-ui/IconButton';
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back'
 
 export const hasBack = (option = {title:'title'}) => {
 	option.iconElementLeft = (<IconButton ><ArrowBack /></IconButton>)
-	option.onLeftIconButtonTouchTap = x => history.back()
+	option.onLeftIconButtonTouchTap = x => browserHistory.goBack()
 	return def(option)
 }
 
