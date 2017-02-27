@@ -1,46 +1,47 @@
 import React, {Component} from 'react'
-import {injectReducer} from '../../../store/reducers'
-import {reducerObj, handleC} from './action';
+import {handleClassForAsync} from '../../../store/reducers'
+import * as action from './action';
 import {hasBack} from '../../../components/Head'
-import style from './style.scss'
+import './style.scss'
 import {box, list} from './model'
 import {List, ListItem} from 'material-ui/List';
+import HeadRight from './HeadRight'
 
 class FilmList extends Component {
 
-	static propTypes: {
-		getList: React.PropTypes.func.isRequired,
-		actList: React.PropTypes.object.isRequired
-	}
+  static propTypes: {
+    getList: React.PropTypes.func.isRequired,
+    actList: React.PropTypes.object.isRequired
+  }
 
-	componentWillMount() {
-		const props = this.props,
-			{movieList} = props;
-		if (!movieList.get('list').size) props.getList();
-	}
+  componentWillMount() {
+    const props = this.props,
+      {movieList, actions} = props;
+    if (!movieList.get('list').size) actions.getList();
+  }
 
-	render() {
-		const props = this.props,
-			{movieList} = props,
-			{showModel, title} = movieList.toJSON();
-		return (
-			<div>
-				{hasBack({title})}
-				<List style={{paddingTop: 64}} className={showModel === 'list' ? style.mainBoxRed : ''}>
-					{movieList.get('list').toJSON().map((e, i) => {
-						return (
-							<ListItem key={e.id}>
-								{showModel === 'list' ? list({i, ...e}) : box({i, ...e})}
-							</ListItem>
-						)
-					})}
-				</List>
-			</div>
-		)
-	}
+  render() {
+    const props = this.props,
+      {movieList, actions} = props,
+      {showModel, title} = movieList.toJSON();
+    return (
+      <div>
+        {hasBack({title, iconElementRight: <HeadRight menuList={[{text: '123', event: actions.getComingSoonList}]}/>})}
+        <List style={{paddingTop: 64}} styleName=''>
+          {movieList.get('list').toJSON().map((e, i) => {
+            return (
+              <ListItem key={e.id}>
+                {showModel === 'list' ? list({i, ...e}) : box({i, ...e})}
+              </ListItem>
+            )
+          })}
+        </List>
+      </div>
+    )
+  }
 }
 
-export default store => {
-	injectReducer(store, reducerObj)
-	return handleC(FilmList)
-}
+export default store => ({
+  path: 'list',
+  component: handleClassForAsync(store)(action)(FilmList)
+})

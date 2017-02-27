@@ -124,7 +124,20 @@ module.exports = {
         test: /\.(js|jsx)$/,
         include: paths.appSrc,
         loader: 'babel',
-        
+        query: {
+          // babel-plugin-react-css-modules
+          plugins: [
+            [
+              'react-css-modules',
+              {
+                "filetypes": {
+                  ".scss": "postcss-scss"
+                },
+                "generateScopedName": "[name]_[local]_[hash:base64:5]"
+              }
+            ]
+          ]
+        }
       },
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
@@ -140,6 +153,7 @@ module.exports = {
       // in the main CSS file.
       {
         test: /\.css$/,
+        exclude: paths.appCommonStyle,
         loader: ExtractTextPlugin.extract(
           'style',
           'css?importLoaders=1&modules&sourceMap&localIdentName=[name]_[local]_[hash:base64:5]',
@@ -147,11 +161,32 @@ module.exports = {
         )
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
+      {
+        test: /\.css$/,
+        include: paths.appCommonStyle,
+        loader: ExtractTextPlugin.extract(
+          'style',
+          'css?importLoaders=1&sourceMap',
+          extractTextPluginOptions
+        )
+        // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+      },
+      {
+        test: /\.(scss|sass)$/,
+        exclude: paths.appCommonStyle,
+        loader: ExtractTextPlugin.extract(
+          'style',
+          'css?importLoaders=1&modules&sourceMap&localIdentName=[name]_[local]_[hash:base64:5]',
+          'sass?sourceMap',
+          extractTextPluginOptions
+        ),
+      },
 			{
 				test: /\.(scss|sass)$/,
+        include: paths.appCommonStyle,
 				loader: ExtractTextPlugin.extract(
 					'style',
-					'css?importLoaders=1&modules&sourceMap&localIdentName=[name]_[local]_[hash:base64:5]',
+					'css?importLoaders=1&sourceMap',
 					'sass?sourceMap',
 					extractTextPluginOptions
 				),

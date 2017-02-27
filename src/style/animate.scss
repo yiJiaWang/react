@@ -1,21 +1,21 @@
-.enter {
+.fade-enter {
     opacity: 0.01;
     transition: opacity 1s ease-in;
 }
-.enter.enterActive {
+.fade-enter-active {
     opacity: 1;
 }
-.leave {
+.fade-leave {
     opacity: 1;
     transition: opacity 1s ease-in;
 }
-.leave.leaveActive {
+.fade-leave-active {
     opacity: 0.01;
 }
-.appear {
+.fade-appear {
     opacity: 0.01;
 }
-.appear.appearActive {
+.fade-appear-active {
     opacity: 1;
     transition: opacity 1s ease-in;
 }

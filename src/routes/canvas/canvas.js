@@ -2,7 +2,7 @@
  * Created by Administrator on 2/18.
  */
 import React, {Component} from 'react'
-import style from './style.scss'
+import './style.scss'
 import animate from './animate'
 import {hasBack} from '../../components/Head'
 import FlatButton from 'material-ui/FlatButton';
@@ -39,9 +39,9 @@ class Canvas extends Component {
 		return (
 			<div>
 				{hasBack({title: 'Tetris'})}
-				<div style={{paddingTop: 64}} className={style.box}>
-					<canvas className={style.canv} id="canv"></canvas>
-					<section className={style.introduce}>
+				<div style={{paddingTop: 64}} styleName="box">
+					<canvas styleName="canv" id="canv"></canvas>
+					<section styleName="">
 						方向键控制 上下左右
 					</section>
 					<div>

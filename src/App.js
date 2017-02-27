@@ -2,11 +2,9 @@ import React, {Component} from 'react';
 import {Provider} from 'react-redux';
 import {browserHistory, Router} from 'react-router';
 import createRoutes from './routes/index';
-import createStore from './store/createStore'
-import './style/common.css'
+import {store} from './store/createStore'
+import './style/common.scss'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-
-const store = createStore()
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941

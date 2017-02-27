@@ -4,11 +4,11 @@
 
 import React from 'react'
 import AppBar from 'material-ui/AppBar';
-import style from './style.scss'
+import './style.scss'
 
 const def = (option = {title:'title'}) => (
 	<AppBar
-		className={style.head}
+		styleName="head"
 		style={{position: 'fixed'}}
 		{...option}
 	/>
