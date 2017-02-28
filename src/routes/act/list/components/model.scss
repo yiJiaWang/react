@@ -1,4 +1,4 @@
-@import "../common/common";
+@import "../../common/common";
 
 .largeTitle {
   @include suspension;
@@ -21,8 +21,21 @@
 }
 
 .info {
+  @include suspension;
   padding: .5rem;
   div {
     padding-bottom: .6rem;
   }
 }
+
+.grid {
+  display: flex;
+  flex-direction: column;
+}
+.gridImgBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 9.5rem;
+}
+

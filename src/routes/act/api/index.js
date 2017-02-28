@@ -20,10 +20,10 @@ import queryString from 'query-string'
 import _ from 'lodash'
 
 const _handleApi = (name) => (data, option) => (window.IS_PRO
-	// || 1
+	|| 1
 ) ? getFromFile(name) : get('/v2/movie/' + name + ((data) ? '?' + queryString.stringify(data) : ''), option)
 
-const apiList = ['coming_soon', 'in_theaters']
+const apiList = ['coming_soon', 'in_theaters', 'search']
 const api = _.reduce(apiList, (res, e, i) => {
 	res[e] = _handleApi(e)
 	return res
