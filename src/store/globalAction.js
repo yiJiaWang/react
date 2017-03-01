@@ -6,7 +6,9 @@ import Immutable from 'immutable';
 
 const GLOBAL_ACTION = 'GLOBAL_ACTION'
 
-const initState = Immutable.fromJS({})
+export const initState = Immutable.fromJS({
+  global_state: {}
+})
 
 export const reducer_0 = handleActions({[GLOBAL_ACTION]: e => e}, initState);
 

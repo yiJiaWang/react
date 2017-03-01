@@ -7,7 +7,7 @@ export default (store) => ({
     require.ensure([], function (require) {
       callback(null, [
         require('./list').default(store),
-        require('./list2').default(store),
+        require('./detail').default(store),
       ])
     })
   },

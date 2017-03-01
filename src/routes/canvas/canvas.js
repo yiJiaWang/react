@@ -4,7 +4,7 @@
 import React, {Component} from 'react'
 import './style.scss'
 import animate from './animate'
-import {hasBack} from '../../components/Head'
+import Head from '../../components/Head'
 import FlatButton from 'material-ui/FlatButton';
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back'
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-downward'
@@ -38,7 +38,7 @@ class Canvas extends Component {
 	render() {
 		return (
 			<div>
-				{hasBack({title: 'Tetris'})}
+				<Head title="Tetris" hasBack="1"/>
 				<div style={{paddingTop: 64}} styleName="box">
 					<canvas styleName="canv" id="canv"></canvas>
 					<section styleName="">

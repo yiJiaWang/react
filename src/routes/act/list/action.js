@@ -8,11 +8,11 @@ import {api} from '../api'
 export const name = 'movieList'
 
 const initState = Immutable.fromJS({
-	// showModel: 'list',
 	showModel: 'grid',
 	title: '电影列表',
 	list: [],
 	start: 0,
+  count: 18,
 	show: false,
 	showSearch: false,
 })
@@ -23,6 +23,8 @@ export const GET_SEARCH_LIST = 'GET_SEARCH_LIST';
 export const SHOW_LOADING = 'SHOW_LOADING';
 export const SHOW_SEARCH = 'SHOW_SEARCH';
 export const CHANGE_SHOW_MODEL = 'CHANGE_SHOW_MODEL';
+export const SET_START = 'SET_START';
+export const SET_Q_VALUE = 'SET_Q_VALUE';
 
 export const api_const = {
 	GET_LIST: {title: '正在热映', method: 'getList'},
@@ -40,30 +42,33 @@ export const show_model_const = {
 export const actions = createActions({
 		[GET_LIST]: async({start = 0, count = 18, city = '武汉'} = {}) => {
 			const data = await api.in_theaters({start, count, city})
-			return data.subjects
+			return data
 		},
 		[GET_COMING_SOON_LIST]: async({start = 0, count = 18, city = '武汉'} = {}) => {
 			const data = await api.coming_soon(({start, count, city}))
-			return data.subjects
+			return data
 		},
 		[GET_SEARCH_LIST]: async({start = 0, count = 18, q = ''} = {}) => {
 			const data = await api.search({q, start, count})
-			return data.subjects
+			return {q, data}
 		},
 		[SHOW_LOADING]: (type = 0) => type,
 		[SHOW_SEARCH]: (type = 0) => type,
 		[CHANGE_SHOW_MODEL]: (type = 'list') => type,
-	}
+	},
+  SET_START, SET_Q_VALUE
 )
 
+const _setList = (s, data) => data.start === 0 ? s.setIn(['list'], data.subjects) : s.update('list', e => e.concat(data.subjects))
 
 export const reducer = handleActions({
-	[GET_SEARCH_LIST]: (s, a) => s.setIn(['list'], a.payload).mergeIn(['title'], '电影搜索'),
-	[GET_LIST]: (s, a) => s.setIn(['list'], a.payload).mergeIn(['title'], api_const[GET_LIST].title),
-	[GET_COMING_SOON_LIST]: (s, a) => s.setIn(['list'], a.payload).mergeIn(['title'], api_const[GET_COMING_SOON_LIST].title),
+	[GET_SEARCH_LIST]: (s, a) => _setList(s, a.payload.data).mergeIn(['title'], '电影搜索').set('q_value', a.payload.q),
+	[GET_LIST]: (s, a) => _setList(s, a.payload).mergeIn(['title'], api_const[GET_LIST].title),
+	[GET_COMING_SOON_LIST]: (s, a) => _setList(s, a.payload).mergeIn(['title'], api_const[GET_COMING_SOON_LIST].title),
 	[SHOW_LOADING]: (s, a) => s.mergeIn(['show'], a.payload),
 	[SHOW_SEARCH]: (s, a) => s.mergeIn(['showSearch'], a.payload),
 	[CHANGE_SHOW_MODEL]: (s, a) => s.mergeIn(['showModel'], a.payload),
+  [SET_START]: (s, a) => s.set('start', a.payload),
 
 }, initState);
 

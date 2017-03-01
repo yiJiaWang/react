@@ -5,8 +5,9 @@ import Immutable from 'immutable';
 // import thunk from 'redux-thunk'
 // import { browserHistory } from 'react-router'
 // import { updateLocation } from './location'
+import {initState} from './globalAction'
 
-export const _createStore = (initialState = Immutable.fromJS({})) => {
+export const _createStore = (initialState = initState) => {
   // ======================================================
   // Middleware Configuration
   // ======================================================
