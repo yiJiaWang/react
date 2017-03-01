@@ -20,7 +20,7 @@ export const GET_DATA = 'GET_DATA';
 
 export const actions = createActions({
     [GET_DATA]: async (id) => {
-      const res = await api.subject('', '1764796')
+      const res = await api.subject('', id)
       return res
     },
   },

@@ -12,9 +12,12 @@ const initState = Immutable.fromJS({
 	title: '电影列表',
 	list: [],
 	start: 0,
-  count: 18,
+	count: 18,
+	lastType: '',
+	q_value: '',
 	show: false,
 	showSearch: false,
+	noData: false,
 })
 
 export const GET_LIST = 'GET_LIST';
@@ -56,19 +59,28 @@ export const actions = createActions({
 		[SHOW_SEARCH]: (type = 0) => type,
 		[CHANGE_SHOW_MODEL]: (type = 'list') => type,
 	},
-  SET_START, SET_Q_VALUE
 )
 
-const _setList = (s, data) => data.start === 0 ? s.setIn(['list'], data.subjects) : s.update('list', e => e.concat(data.subjects))
+const _setList = (s, data) => {
+	return data.start === 0 ? s.setIn(['list'], data.subjects).set('start', data.start).set('noData', data.subjects.length < data.count) : s.update('list', e => e.concat(data.subjects)).set('start', data.start).set('noData', data.subjects.length < data.count)
+}
 
 export const reducer = handleActions({
-	[GET_SEARCH_LIST]: (s, a) => _setList(s, a.payload.data).mergeIn(['title'], '电影搜索').set('q_value', a.payload.q),
-	[GET_LIST]: (s, a) => _setList(s, a.payload).mergeIn(['title'], api_const[GET_LIST].title),
-	[GET_COMING_SOON_LIST]: (s, a) => _setList(s, a.payload).mergeIn(['title'], api_const[GET_COMING_SOON_LIST].title),
+
+	[GET_SEARCH_LIST]: (s, a) => _setList(s, a.payload.data)
+		.mergeIn(['title'], api_type_const[GET_SEARCH_LIST].title)
+		.set('q_value', a.payload.q).set('lastType', GET_SEARCH_LIST),
+
+	[GET_LIST]: (s, a) => _setList(s, a.payload)
+		.mergeIn(['title'], api_const[GET_LIST].title).set('lastType', GET_LIST),
+
+	[GET_COMING_SOON_LIST]: (s, a) => _setList(s, a.payload)
+		.mergeIn(['title'], api_const[GET_COMING_SOON_LIST].title)
+		.set('lastType', GET_COMING_SOON_LIST),
+
 	[SHOW_LOADING]: (s, a) => s.mergeIn(['show'], a.payload),
 	[SHOW_SEARCH]: (s, a) => s.mergeIn(['showSearch'], a.payload),
 	[CHANGE_SHOW_MODEL]: (s, a) => s.mergeIn(['showModel'], a.payload),
-  [SET_START]: (s, a) => s.set('start', a.payload),
 
 }, initState);
 

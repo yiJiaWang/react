@@ -50,7 +50,7 @@ export default class HeadRight extends Component {
 					id="search_q"
 					style={{display: showSearch ? '' : 'none', position: 'absolute', left: '-16rem'}}
 					styleName={showSearch ? 'searchShow' : 'searchHide'}
-					underlineFocusStyle={{borderColor: '#202125'}}
+					underlineFocusStyle={{borderColor: '#202125', borderBottom: 'solid 1px'}}
 					onChange={this.handleSearchChange}
 					value={this.state.searchValue}
 				/>

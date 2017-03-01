@@ -13,7 +13,7 @@ export default class Head extends Component {
 
   render() {
     const option = this.props,
-      _option = option.hasBack ? {
+      _option = !option.noBack ? {
           ...option,
           iconElementLeft: (<IconButton ><ArrowBack /></IconButton>),
           onLeftIconButtonTouchTap: x => browserHistory.goBack()

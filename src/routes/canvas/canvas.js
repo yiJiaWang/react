@@ -38,7 +38,7 @@ class Canvas extends Component {
 	render() {
 		return (
 			<div>
-				<Head title="Tetris" hasBack="1"/>
+				<Head title="Tetris" />
 				<div style={{paddingTop: 64}} styleName="box">
 					<canvas styleName="canv" id="canv"></canvas>
 					<section styleName="">

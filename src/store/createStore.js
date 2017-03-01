@@ -1,11 +1,11 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import rx_promise from 'redux-promise'
 import makeRootReducer from './reducers'
-import Immutable from 'immutable';
+import {initState} from './globalAction'
+// import Immutable from 'immutable';
 // import thunk from 'redux-thunk'
 // import { browserHistory } from 'react-router'
 // import { updateLocation } from './location'
-import {initState} from './globalAction'
 
 export const _createStore = (initialState = initState) => {
   // ======================================================
