@@ -11,17 +11,9 @@ import Paper from 'material-ui/Paper'
 
 class FilmDetail extends Component {
 
-	constructor(props) {
-		super(props);
-	}
-
 	componentWillMount() {
-		const {detail, actions, params:{id}} = this.props,
-      _getData = async id => {
-		    await actions.getData(id)
-        await actions.getComments(id)
-      }
-		detail.getIn(['data', 'id']) !== id && _getData(id)
+		const {detail, actions, params:{id}} = this.props
+		detail.getIn(['data', 'id']) !== id && actions.getData(id)
 	}
 
 	render() {
@@ -47,8 +39,8 @@ class FilmDetail extends Component {
 					<Paper onTouchTap={actions.changeOption.bind(this, {key: 'showMoreIntro', value: !showMoreIntro})} styleName={showMoreIntro?'infoMore':'intro'}>{data.summary}</Paper>
           <div>
             {data.casts.map(e => (
-              <Paper styleName="casts" >
-                <div styleName="img"><img src={e.avatars.medium}/></div>
+              <Paper key={e.id} styleName="casts" >
+                <div styleName="img"><img alt="" src={e.avatars.medium}/></div>
                 <div styleName="info">
                   <div >{e.name}</div>
                 </div>

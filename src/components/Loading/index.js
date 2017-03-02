@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2/28.
  */
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
 import './style.scss'
 
 /**
