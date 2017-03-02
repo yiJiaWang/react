@@ -38,9 +38,9 @@ class FilmList extends Component {
 		const props = this.props,
 			{actions} = props;
 		return async e => {
-			actions.showLoading(1)
+			actions.showLoading(true)
 			await actions[api_type_const[method].method](params || {start: props.movieList.get('start')})
-			actions.showLoading(0)
+			actions.showLoading(false)
 		}
 	}
 
