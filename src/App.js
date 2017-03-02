@@ -1,15 +1,20 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
-import {browserHistory, Router} from 'react-router';
+import {useRouterHistory , Router} from 'react-router';
 import createRoutes from './routes/index';
 import {store} from './store/createStore'
 import './style/common.scss'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { createHistory} from 'history'
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
+
+const browserHistory = useRouterHistory(createHistory)({
+  basename: "/react-app-ss"
+});
 
 class App extends Component {
     render() {
