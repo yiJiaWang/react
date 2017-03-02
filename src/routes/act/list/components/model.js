@@ -7,6 +7,9 @@ import './model.scss'
 import {List, ListItem} from 'material-ui/List'
 import {GridList, GridTile} from 'material-ui/GridList'
 
+/**
+ * 列表视图组件
+ */
 export class FList extends Component {
 
   render() {
@@ -27,6 +30,9 @@ export class FList extends Component {
   }
 }
 
+/**
+ *  平铺视图组件
+ */
 export class FGrid extends Component {
 
   render() {

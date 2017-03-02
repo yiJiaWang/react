@@ -5,6 +5,9 @@ import './Home.scss'
 import Head from '../Head'
 import RaisedButton from 'material-ui/RaisedButton';
 
+/**
+ * 首页
+ */
 class Home extends Component {
   render() {
     return (

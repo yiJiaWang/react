@@ -12,6 +12,9 @@ import TextField from 'material-ui/TextField'
 import Divider from 'material-ui/Divider'
 import './HeadRight.scss'
 
+/**
+ *  搜索,菜单 按钮
+ */
 export default class HeadRight extends Component {
 
 	constructor(props) {

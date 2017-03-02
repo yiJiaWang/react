@@ -5,6 +5,10 @@ import Box from './box'
 import _ from 'lodash'
 import config from '../config'
 
+/**
+ * 实现动画功能
+ * 尝试用函数式编程方式
+ */
 const run = obj => obj.run()
 const draw = _.curry((context, obj) => {
     return obj.draw(context)

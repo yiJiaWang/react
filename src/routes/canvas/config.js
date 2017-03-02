@@ -2,15 +2,8 @@
  * Created by Administrator on 2/19.
  */
 
-export const _con = {
-	width: 330,
-	height: 540,
-	l: 30,
-	hz: 200,
-	aniHz: 50,
-};
-
 export default (x => {
+  // 根据窗口大小 生成canvas
 	const clientWidth = document.body.clientWidth;
 	const clientHeight = document.body.clientHeight;
 	let l,
@@ -21,7 +14,7 @@ export default (x => {
 		width: l * 11,
 		height: l * 18,
 		l: l,
-		hz: 500,
-		aniHz: 60,
+		hz: 500, // 下落速度
+		aniHz: 60, // 刷新频率
 	}
 })()

@@ -13,6 +13,7 @@ class FilmList extends Component {
 
 	constructor(props) {
 		super(props);
+		// 构建菜单按钮数据
 		this.menuList = _.map(api_const, (e, k) => ({
 			text: e.title,
 			event: this._getList(k, {start: 0})
@@ -26,6 +27,13 @@ class FilmList extends Component {
 		this.props.movieList.get('list').size === 0 && this._getList(action.GET_LIST, {start: 0})();
 	}
 
+  /**
+   * 查询列表数据
+   * @param method
+   * @param params
+   * @returns {function(*)}
+   * @private
+   */
 	_getList(method, params) {
 		const props = this.props,
 			{actions} = props;
@@ -36,6 +44,7 @@ class FilmList extends Component {
 		}
 	}
 
+	// 搜索按钮
 	searchBtn = showSearch => value => e => {
 		const actions = this.props.actions;
 		actions.showSearch(showSearch);
@@ -44,6 +53,7 @@ class FilmList extends Component {
 		}
 	}
 
+	// 跳转详情页
 	goToDetail = id => e => this.props.router.push('/act/detail/' + id)
 
 	moreBtn = e => {
@@ -75,8 +85,6 @@ class FilmList extends Component {
 		)
 	}
 }
-
-FilmList.propTypes = {}
 
 export default store => ({
 	path: 'list',

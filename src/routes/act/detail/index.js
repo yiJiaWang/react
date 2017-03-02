@@ -20,7 +20,6 @@ class FilmDetail extends Component {
 		detail.getIn(['data', 'id']) !== params.id && actions.getData(params.id)
 	}
 
-
 	render() {
 		const props = this.props,
 			{detail} = props;

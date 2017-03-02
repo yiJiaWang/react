@@ -4,6 +4,9 @@
 import _ from 'lodash'
 import config from '../../config'
 
+/**
+ * 单个方块
+ */
 export default class Square {
 
 	constructor({l = config.l, style = "black", x = 0, y = 0}={}) {

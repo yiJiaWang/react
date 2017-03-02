@@ -2,6 +2,9 @@
  * Created by Administrator on 2/18.
  */
 
+/**
+ * 方块组合的参数 旋转方式
+ */
 export const types = {
     1: {
         0: [[0, 0], [-1, 0], [0, -1], [-1, -1]],

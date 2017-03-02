@@ -4,11 +4,10 @@
 import React, {Component, PropTypes} from 'react'
 import './style.scss'
 
+/**
+ *  loading组件
+ */
 export default class Loading extends Component {
-
-  static propTypes: {
-    show: PropTypes.boolean
-  }
 
   render() {
     return <div styleName="box" style={{display: this.props.show ? '' : 'none'}}>
@@ -16,4 +15,8 @@ export default class Loading extends Component {
       <img styleName="maskImg" role="presentation" src={require('./loading-spinning-bubbles.svg')}/>
     </div>
   }
+}
+
+Loading.propTypes = {
+  show: React.PropTypes.bool
 }

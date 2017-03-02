@@ -12,6 +12,10 @@ const initF = type => (x, y) => dir => {
     return typeShape[type][dir].map(e => new Square({x: x + e[0] * l, y: y + e[1] * l}))
 }
 
+/**
+ * 四个方块组合
+ * 有7种形状
+ */
 export default class Fours {
 
     constructor({type = 1, dir = 0, l = config.l, style = "black", x = wid * l, y = -l}={}) {
@@ -39,6 +43,11 @@ export default class Fours {
         return self;
     }
 
+  /**
+   * 判断是否接触
+   * @param walls
+   * @returns {{}}
+   */
     justify(walls) {
         let res = {}
         _.forEach(this.fourArr, e => {

@@ -2,9 +2,6 @@
 import Home from '../components/Home'
 import Layout from '../components/Layout'
 
-/*  Note: Instead of using JSX, we recommend using react-router
- PlainRoute objects to build route definitions.   */
-
 export const createRoutes = (store) => ({
 	path: '/',
 	component: Layout,
