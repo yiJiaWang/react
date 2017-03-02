@@ -16,16 +16,20 @@ class FilmDetail extends Component {
 	}
 
 	componentWillMount() {
-		const {detail, actions, params} = this.props
-		detail.getIn(['data', 'id']) !== params.id && actions.getData(params.id)
+		const {detail, actions, params:{id}} = this.props,
+      _getData = async id => {
+		    await actions.getData(id)
+        await actions.getComments(id)
+      }
+		detail.getIn(['data', 'id']) !== id && _getData(id)
 	}
 
 	render() {
 		const props = this.props,
-			{detail} = props;
-		const {data} = detail.toJSON()
+			{detail, actions} = props;
+		const {data, showMoreIntro} = detail.toJSON()
 
-		return <div>
+    return <div>
 			<Head title={data.title || ''}/>
 			{(!data.images) ? <div></div>
 				: <div styleName="detail">
@@ -33,14 +37,24 @@ class FilmDetail extends Component {
 						<div styleName="img">
 							<img src={data.images.medium} alt=""/>
 						</div>
-						<div styleName="info">
+						<div styleName='info'>
 							<div><span>{data.rating.average}分</span><span>({data.ratings_count}人评分)</span></div>
 							<div>{data.year}</div>
 							<div>{data.genres.join('/')}</div>
 							<div>{data.countries[0]}</div>
 						</div>
 					</main>
-					<Paper styleName="intro">{data.summary}</Paper>
+					<Paper onTouchTap={actions.changeOption.bind(this, {key: 'showMoreIntro', value: !showMoreIntro})} styleName={showMoreIntro?'infoMore':'intro'}>{data.summary}</Paper>
+          <div>
+            {data.casts.map(e => (
+              <Paper styleName="casts" >
+                <div styleName="img"><img src={e.avatars.medium}/></div>
+                <div styleName="info">
+                  <div >{e.name}</div>
+                </div>
+              </Paper>
+            ))}
+          </div>
 				</div>
 			}
 

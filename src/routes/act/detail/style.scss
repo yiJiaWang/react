@@ -21,9 +21,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  img {
+    max-height: 100%;
+  }
 }
 
+@keyframes more {
+  0% {
+    max-height: 4.2rem;
+  }
+}
 .intro {
+  overflow: hidden;
   margin-top: 1rem;
   padding: .2rem;
+  max-height: 4.2rem;
+}
+.infoMore {
+  @extend .intro;
+  animation: more 2s;
+  max-height: 200rem;
+}
+
+.casts {
+  display: flex;
+  padding: .6rem;
+  margin-top: .5rem;
+  height: 5rem;
+  div {
+    height: 100%;
+  }
 }
