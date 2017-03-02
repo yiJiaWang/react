@@ -1,6 +1,9 @@
 /**
  * Created by Administrator on 2/24.
  */
+import queryString from 'query-string'
+import _ from 'lodash'
+import apiData from './apiData'
 
 export const get = async(url, option) => {
   try {
@@ -12,17 +15,13 @@ export const get = async(url, option) => {
   }
 }
 
-import apiData from './apiData'
-const getFromFile = (params) => (apiData[params])
-
-import queryString from 'query-string'
-import _ from 'lodash'
+const getFromFile = (params) => data => (apiData[params][data.start === 0 ? '0' : '1'])
 
 const _handleApi = (name) => (data, routeId, option) => (window.IS_PRO
   // || 1
-) ? getFromFile(name) : get('/v2/movie/' + name + (routeId ? '/' + routeId : '') + ((data) ? '?' + queryString.stringify(data) : ''), option)
+) ? getFromFile(name)(data) : get('/v2/movie/' + name + (routeId ? '/' + routeId : '') + ((data) ? '?' + queryString.stringify(data) : ''), option)
 
-const apiList = ['coming_soon', 'in_theaters', 'search', 'subject']
+const apiList = ['top250', 'coming_soon', 'in_theaters', 'search', 'subject']
 const api = _.reduce(apiList, (res, e, i) => {
   res[e] = _handleApi(e)
   return res

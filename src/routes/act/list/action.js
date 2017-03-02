@@ -21,6 +21,7 @@ const initState = Immutable.fromJS({
 })
 
 export const GET_LIST = 'GET_LIST';
+export const GET_TOP250 = 'GET_TOP250';
 export const GET_COMING_SOON_LIST = 'GET_COMING_SOON_LIST';
 export const GET_SEARCH_LIST = 'GET_SEARCH_LIST';
 export const SHOW_LOADING = 'SHOW_LOADING';
@@ -32,6 +33,7 @@ export const SET_Q_VALUE = 'SET_Q_VALUE';
 export const api_const = {
 	GET_LIST: {title: '正在热映', method: 'getList'},
 	GET_COMING_SOON_LIST: {title: '即将上映', method: 'getComingSoonList'},
+	GET_TOP250: {title: '豆瓣电影Top250', method: 'getTop250'},
 }
 export const api_type_const = {
 	...api_const,
@@ -43,12 +45,16 @@ export const show_model_const = {
 }
 
 export const actions = createActions({
+		[GET_TOP250]: async({start = 0, count = 18} = {}) => {
+			const data = await api.top250({start, count})
+			return data
+		},
 		[GET_LIST]: async({start = 0, count = 18, city = '武汉'} = {}) => {
 			const data = await api.in_theaters({start, count, city})
 			return data
 		},
-		[GET_COMING_SOON_LIST]: async({start = 0, count = 18, city = '武汉'} = {}) => {
-			const data = await api.coming_soon(({start, count, city}))
+		[GET_COMING_SOON_LIST]: async({start = 0, count = 18, } = {}) => {
+			const data = await api.coming_soon(({start, count}))
 			return data
 		},
 		[GET_SEARCH_LIST]: async({start = 0, count = 18, q = ''} = {}) => {
@@ -66,6 +72,9 @@ const _setList = (s, data) => {
 }
 
 export const reducer = handleActions({
+
+	[GET_TOP250]: (s, a) => _setList(s, a.payload)
+		.mergeIn(['title'], api_const[GET_TOP250].title).set('lastType', GET_TOP250),
 
 	[GET_SEARCH_LIST]: (s, a) => _setList(s, a.payload.data)
 		.mergeIn(['title'], api_type_const[GET_SEARCH_LIST].title)

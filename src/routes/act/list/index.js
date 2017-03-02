@@ -24,7 +24,7 @@ class FilmList extends Component {
 	}
 
 	componentWillMount() {
-		this.props.movieList.get('list').size === 0 && this._getList(action.GET_LIST, {start: 0})();
+		this.props.movieList.get('list').size === 0 && this._getList(action.GET_TOP250, {start: 0})();
 	}
 
   /**

@@ -8,6 +8,7 @@ import './style.scss'
 import {name, reducer, actions} from './action';
 import Head from '../../../components/Head'
 import Paper from 'material-ui/Paper'
+import Down from 'material-ui/svg-icons/hardware/keyboard-arrow-down'
 
 class FilmDetail extends Component {
 
@@ -36,7 +37,9 @@ class FilmDetail extends Component {
 							<div>{data.countries[0]}</div>
 						</div>
 					</main>
-					<Paper onTouchTap={actions.changeOption.bind(this, {key: 'showMoreIntro', value: !showMoreIntro})} styleName={showMoreIntro?'infoMore':'intro'}>{data.summary}</Paper>
+					<Paper onTouchTap={actions.changeOption.bind(this, {key: 'showMoreIntro', value: !showMoreIntro})} styleName={showMoreIntro?'infoMore':'intro'}>{data.summary}
+						{showMoreIntro?'':<Down styleName="down" />}
+					</Paper>
           <div>
             {data.casts.map(e => (
               <Paper key={e.id} styleName="casts" >

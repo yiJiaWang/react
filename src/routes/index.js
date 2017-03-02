@@ -8,7 +8,8 @@ export const createRoutes = (store) => ({
 	indexRoute: Home,
 	childRoutes: [
 		require('./act').default(store),
-		require('./canvas').default(store)
+		require('./canvas').default(store),
+		require('./redirect').default()
 	]
 })
 
