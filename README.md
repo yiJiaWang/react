@@ -8,7 +8,7 @@ demo : [https://ss707494.github.io/react-app-ss](https://ss707494.github.io/reac
 
 ## 现有功能
 * 仿照豆瓣电影app开发的h5页面,实现列表展示,关键词搜索,不同列表切换,加载更多,列表视图切换,详情页面等功能
-* 小游戏 俄罗斯方块 方向键上下左右 或 点击按钮 控制 
+* 小游戏 俄罗斯方块 **方向键上下左右** 或 **点击按钮** 控制 
 
 ## 运行
 ```
@@ -35,3 +35,21 @@ $ npm run start
 * 俄罗斯方块使用html标签canvas的动画实现
 
 * 辅助工具库 [lodash](https://github.com/lodash/lodash)
+
+## 目录说明
+
+```
+react-app-ss/
+    config/ --配置文件
+    public/
+    script/ --运行脚本
+    src/ --主代码
+        static/ --静态文件(图片,字体)
+        components/ --公共组件
+        style/ --通用css(未经过module处理,用类名引用)
+        routes/ --路由目录
+        App.js
+        index.js --入口文件
+        index_pro.js --因github pages有跨域问题,打包时切换入口文件,api从本地拿取mock数据
+        
+```
