@@ -53,3 +53,6 @@ react-app-ss/
         index_pro.js --因github pages有跨域问题,打包时切换入口文件,api从本地拿取mock数据
         
 ```
+## TODO
+*  ★评分组件
+* loading优化

@@ -14,7 +14,7 @@ class Home extends Component {
       <div styleName="home">
         <Head title='Welcome' showMenuIconButton={false}/>
         <div style={{paddingTop: 64}} styleName="route">
-          <Link styleName='link' to="/act/list">
+          <Link styleName='link' to="/film/list">
             <RaisedButton label="豆瓣电影 DEMO" primary={true}/>
           </Link>
           <Link styleName='link' to="/canvas">

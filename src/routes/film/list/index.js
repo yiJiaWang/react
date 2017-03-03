@@ -54,7 +54,7 @@ class FilmList extends Component {
 	}
 
 	// 跳转详情页
-	goToDetail = id => e => this.props.router.push('/act/detail/' + id)
+	goToDetail = id => e => this.props.router.push('/film/detail/' + id)
 
 	moreBtn = e => {
 		const {movieList} = this.props;
