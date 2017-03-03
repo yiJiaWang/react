@@ -80,7 +80,7 @@ class FilmList extends Component {
 				{noData
 					? (<div styleName="moreBtn" >加载完</div>)
 					: (<div styleName="moreBtn" onTouchTap={this.moreBtn}>点击加载更多</div>)}
-				<Loading show={show}/>
+        {show ? <Loading/> : ''}
 			</div>
 		)
 	}

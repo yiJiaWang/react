@@ -21,6 +21,7 @@ class Home extends Component {
             <RaisedButton label="俄罗斯方块 DEMO" primary={true}/>
           </Link>
         </div>
+        <div styleName="githubUrl">github:<a href="https://github.com/ss707494/react-app-ss">https://github.com/ss707494/react-app-ss</a></div>
       </div>
     )
   }

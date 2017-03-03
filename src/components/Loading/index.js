@@ -3,6 +3,7 @@
  */
 import React, {Component} from 'react'
 import './style.scss'
+import RefreshIndicator from 'material-ui/RefreshIndicator';
 
 /**
  *  loading组件
@@ -10,13 +11,17 @@ import './style.scss'
 export default class Loading extends Component {
 
   render() {
-    return <div styleName="box" style={{display: this.props.show ? '' : 'none'}}>
+    return <div styleName="box" >
       <div styleName="mask"></div>
-      <img styleName="maskImg" role="presentation" src={require('./loading-spinning-bubbles.svg')}/>
+      <div styleName="maskImg">
+        <RefreshIndicator
+          size={40}
+          left={-20}
+          top={-20}
+          status="loading"
+        />
+      </div>
     </div>
   }
 }
 
-Loading.propTypes = {
-  show: React.PropTypes.bool
-}
