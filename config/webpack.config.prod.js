@@ -176,8 +176,8 @@ module.exports = {
         exclude: paths.appCommonStyle,
         loader: ExtractTextPlugin.extract(
           'style',
-          'css?importLoaders=1&modules&sourceMap&localIdentName=[name]_[local]_[hash:base64:5]',
-          'sass?sourceMap',
+          ['css?importLoaders=1&modules&sourceMap&localIdentName=[name]_[local]_[hash:base64:5]',
+          'sass?sourceMap'],
           extractTextPluginOptions
         ),
       },
@@ -186,8 +186,8 @@ module.exports = {
         include: paths.appCommonStyle,
 				loader: ExtractTextPlugin.extract(
 					'style',
-					'css?importLoaders=1&sourceMap',
-					'sass?sourceMap',
+					['css?importLoaders=1&sourceMap',
+					'sass?sourceMap'],
 					extractTextPluginOptions
 				),
 			},

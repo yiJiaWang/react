@@ -15,10 +15,13 @@ export const get = async(url, option) => {
   }
 }
 
-const getFromFile = (params) => data => (apiData[params][data.start === 0 ? '0' : '1'])
+const getFromFile = (params) => data => new Promise((resolve) => {
+		setTimeout(x => resolve(apiData[params][data.start === 0 ? '0' : '1']), 2500);
+	})
+
 
 const _handleApi = (name) => (data, routeId, option) => (window.IS_PRO
-  // || 1
+  || 1
 ) ? getFromFile(name)(data) : get('/v2/movie/' + name + (routeId ? '/' + routeId : '') + ((data) ? '?' + queryString.stringify(data) : ''), option)
 
 const apiList = ['top250', 'coming_soon', 'in_theaters', 'search', 'subject']
