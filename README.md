@@ -54,5 +54,3 @@ react-app-ss/
         
 ```
 ## TODO
-*  ★评分组件
-* loading优化

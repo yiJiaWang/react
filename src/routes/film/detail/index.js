@@ -9,6 +9,7 @@ import {name, reducer, actions} from './action';
 import Head from '../../../components/Head'
 import Paper from 'material-ui/Paper'
 import Down from 'material-ui/svg-icons/hardware/keyboard-arrow-down'
+import RateStar from '../../../components/RateStar'
 
 class FilmDetail extends Component {
 
@@ -22,7 +23,7 @@ class FilmDetail extends Component {
 			{detail, actions} = props;
 		const {data, showMoreIntro} = detail.toJSON()
 
-    return <div>
+		return <div>
 			<Head title={data.title || ''}/>
 			{(!data.images) ? <div></div>
 				: <div styleName="detail">
@@ -31,25 +32,27 @@ class FilmDetail extends Component {
 							<img src={data.images.medium} alt=""/>
 						</div>
 						<div styleName='info'>
-							<div><span>{data.rating.average}分</span><span>({data.ratings_count}人评分)</span></div>
+							<div><RateStar rate={data.rating.average}/><span style={{color: '#f56d4c'}}>{data.rating.average}</span>
+								<span>({data.ratings_count}人评分)</span></div>
 							<div>{data.year}</div>
 							<div>{data.genres.join('/')}</div>
 							<div>{data.countries[0]}</div>
 						</div>
 					</main>
-					<Paper onTouchTap={actions.changeOption.bind(this, {key: 'showMoreIntro', value: !showMoreIntro})} styleName={showMoreIntro?'infoMore':'intro'}>{data.summary}
-						{showMoreIntro?'':<Down styleName="down" />}
+					<Paper onTouchTap={actions.changeOption.bind(this, {key: 'showMoreIntro', value: !showMoreIntro})}
+								 styleName={showMoreIntro ? 'infoMore' : 'intro'}>{data.summary}
+						{showMoreIntro ? '' : <Down styleName="down"/>}
 					</Paper>
-          <div>
-            {data.casts.map(e => (
-              <Paper key={e.id} styleName="casts" >
-                <div styleName="img"><img alt="" src={e.avatars.medium}/></div>
-                <div styleName="info">
-                  <div >{e.name}</div>
-                </div>
-              </Paper>
-            ))}
-          </div>
+					<div>
+						{data.casts.map(e => (
+							<Paper key={e.id} styleName="casts">
+								<div styleName="img"><img alt="" src={e.avatars.medium}/></div>
+								<div styleName="info">
+									<div >{e.name}</div>
+								</div>
+							</Paper>
+						))}
+					</div>
 				</div>
 			}
 
