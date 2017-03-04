@@ -51,7 +51,7 @@ export default class HeadRight extends Component {
 			<div>
 				<TextField
 					id="search_q"
-					style={{display: showSearch ? '' : 'none', position: 'absolute', left: '-16rem'}}
+					style={{display: showSearch ? '' : 'none', position: 'absolute',width: '12rem', left: '-12rem'}}
 					styleName={showSearch ? 'searchShow' : 'searchHide'}
 					underlineFocusStyle={{borderColor: '#202125', borderBottom: 'solid 1px'}}
 					onChange={this.handleSearchChange}
