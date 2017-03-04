@@ -49,7 +49,7 @@ class FilmList extends Component {
 		const actions = this.props.actions;
 		actions.showSearch(showSearch);
 		if (!showSearch && value) {
-			this._getList(action.GET_SEARCH_LIST, {q: value, start: this.props.movieList.get('start')})(e);
+			this._getList(action.GET_SEARCH_LIST, {q: value, start: 0})(e);
 		}
 	}
 
