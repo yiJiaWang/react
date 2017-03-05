@@ -42,3 +42,12 @@ RateStar.defaultProps = {
 	rate: 10
 }
 
+RateStar.propTypes = {
+	color: React.PropTypes.string,
+	size: React.PropTypes.string,
+	min: React.PropTypes.number,
+	max: React.PropTypes.number,
+	number: React.PropTypes.number,
+	rate: React.PropTypes.number
+}
+

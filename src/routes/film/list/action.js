@@ -53,7 +53,7 @@ export const actions = createActions({
 			const data = await api.in_theaters({start, count, city})
 			return data
 		},
-		[GET_COMING_SOON_LIST]: async({start = 0, count = 18, } = {}) => {
+		[GET_COMING_SOON_LIST]: async({start = 0, count = 18 } = {}) => {
 			const data = await api.coming_soon(({start, count}))
 			return data
 		},
