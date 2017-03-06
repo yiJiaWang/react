@@ -18,7 +18,7 @@ export class FList extends Component {
     return <List style={{paddingTop: 64}} styleName=''>
       {movieList.get('list')
         .map(({images:{medium}, id, title, original_title, rating:{average}}) => <ListItem key={id}>
-            <div onTouchTap={goToDetail(id)} styleName="listModel">
+            <div onClick={goToDetail(id)} styleName="listModel">
               <img role="presentation" src={medium}/>
               <div styleName="info">
                 <div styleName="largeTitle">{title}</div>
@@ -43,7 +43,7 @@ export class FGrid extends Component {
     return <GridList cellHeight={"auto"} cols={_col} padding={4} style={{paddingTop: 64, margin: 10}} styleName='gridList'>
       {movieList.get('list')
         .map(({images:{medium}, id, title, rating:{average}}) => <GridTile key={id}>
-          <div onTouchTap={goToDetail(id)} styleName="grid">
+          <div onClick={goToDetail(id)} styleName="grid">
               <div styleName="gridImgBox">
                 <img role="presentation" src={medium}/>
               </div>

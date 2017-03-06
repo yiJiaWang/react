@@ -18,6 +18,7 @@ const initState = Immutable.fromJS({
 	show: false,
 	showSearch: false,
 	noData: false,
+  showHead: true,
 })
 
 export const GET_LIST = 'GET_LIST';
@@ -29,6 +30,7 @@ export const SHOW_SEARCH = 'SHOW_SEARCH';
 export const CHANGE_SHOW_MODEL = 'CHANGE_SHOW_MODEL';
 export const SET_START = 'SET_START';
 export const SET_Q_VALUE = 'SET_Q_VALUE';
+export const SHOW_HEAD = 'SHOW_HEAD';
 
 export const api_const = {
 	GET_LIST: {title: '正在热映', method: 'getList'},
@@ -64,7 +66,7 @@ export const actions = createActions({
 		[SHOW_LOADING]: (type = 0) => type,
 		[SHOW_SEARCH]: (type = 0) => type,
 		[CHANGE_SHOW_MODEL]: (type = 'list') => type,
-	},
+	}, SHOW_HEAD
 )
 
 const _setList = (s, data) => {
@@ -90,6 +92,7 @@ export const reducer = handleActions({
 	[SHOW_LOADING]: (s, a) => s.mergeIn(['show'], a.payload),
 	[SHOW_SEARCH]: (s, a) => s.mergeIn(['showSearch'], a.payload),
 	[CHANGE_SHOW_MODEL]: (s, a) => s.mergeIn(['showModel'], a.payload),
+  [SHOW_HEAD]: (s, a) => s.mergeIn(['showHead'], a.payload),
 
 }, initState);
 
