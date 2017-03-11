@@ -27,6 +27,7 @@ $ npm run start
     * [React Router](https://github.com/ReactTraining/react-router)
     * [React Redux](https://github.com/reactjs/react-redux)
         * [redux-promise](https://github.com/acdlite/redux-promise)
+        * [redux-logger](https://github.com/evgenyrodionov/redux-logger)
         * [redux-immutable](https://github.com/gajus/redux-immutable)
         * [redux-actions](https://github.com/acdlite/redux-actions)
     * [react-addons-css-transition-group](https://facebook.github.io/react/docs/animation.html)
@@ -34,7 +35,7 @@ $ npm run start
 
 * 俄罗斯方块使用html标签canvas的动画实现
 
-* 辅助工具库 [lodash](https://github.com/lodash/lodash)
+* 辅助工具库 [lodash](https://github.com/lodash/lodash)[fetch-jsonp](https://github.com/camsong/fetch-jsonp)
 
 ## 目录说明
 
@@ -50,7 +51,7 @@ react-app-ss/
         routes/ --路由目录
         App.js
         index.js --入口文件
-        index_pro.js --因github pages有跨域问题,打包时切换入口文件,api从本地拿取mock数据
+        index_pro.js --打包时的入口文件,去掉日志
         
 ```
 ## TODO
