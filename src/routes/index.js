@@ -9,6 +9,7 @@ export const createRoutes = (store) => ({
 	childRoutes: [
 		require('./film').default(store),
 		require('./canvas').default(store),
+		require('./jigsaw').default(store),
 		require('./redirect').default()
 	]
 })

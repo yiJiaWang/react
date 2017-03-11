@@ -17,8 +17,11 @@ class Home extends Component {
           <Link styleName='link' to="/film/list">
             <RaisedButton label="豆瓣电影 DEMO" primary={true}/>
           </Link>
-          <Link styleName='link' to="/canvas">
-            <RaisedButton label="俄罗斯方块 DEMO" primary={true}/>
+					<Link styleName='link' to="/canvas">
+						<RaisedButton label="俄罗斯方块 DEMO" primary={true}/>
+					</Link>
+          <Link styleName='link' to="/jigsaw">
+            <RaisedButton label="拼图 demo" primary={true}/>
           </Link>
         </div>
         <div styleName="githubUrl"><img alt="" src={require('./mark-github.svg')}/>:<a href="https://github.com/ss707494/react-app-ss">https://github.com/ss707494/react-app-ss</a></div>

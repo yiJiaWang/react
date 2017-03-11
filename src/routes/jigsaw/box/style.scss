@@ -1,0 +1,36 @@
+$width : 20rem;
+.box {
+  width: 100%;
+  text-align: center;
+}
+
+.msg {
+  width: 100%;
+  color: #67ff1f;
+  position: absolute;
+}
+
+.picBox {
+  width: $width;
+  height: $width;
+  border: 1px solid #000000;
+  margin: 4rem auto;
+  display: flex;
+  flex-direction: column;
+  div {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+  }
+  span {
+    flex: 1;
+    border: 1px solid #000000;
+    font-size: 2rem;
+    line-height: $width / 3;
+  }
+}
+
+
+.canv {
+
+}
