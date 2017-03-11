@@ -1,5 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import rx_promise from 'redux-promise'
+import createLogger from 'redux-logger'
 import makeRootReducer from './reducers'
 import {initState} from './globalAction'
 // import Immutable from 'immutable';
@@ -12,6 +13,14 @@ export const _createStore = (initialState = initState) => {
   // Middleware Configuration
   // ======================================================
   const middleware = [rx_promise]
+
+	if (window.IS_PRO) {
+		// 输出日志
+		const logger = createLogger({
+			stateTransformer: store => store.toJSON(),
+		})
+		middleware[middleware.length] = logger;
+	}
 
   // ======================================================
   // Store Enhancers

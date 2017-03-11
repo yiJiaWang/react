@@ -25,6 +25,7 @@
     "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "6.4.1",
     "extract-text-webpack-plugin": "1.0.1",
+    "fetch-jsonp": "^1.0.6",
     "file-loader": "0.10.0",
     "filesize": "3.3.0",
     "fs-extra": "0.30.0",
@@ -54,6 +55,7 @@
     "redux": "^3.6.0",
     "redux-actions": "^1.2.1",
     "redux-immutable": "^3.1.0",
+    "redux-logger": "^2.8.2",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.0",
@@ -109,6 +111,5 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "https://api.douban.com",
-  "homepage": "http://ss707494.github.io/react-app-ss"
+  "proxy": "https://api.douban.com"
 }
