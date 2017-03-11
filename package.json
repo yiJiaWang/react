@@ -112,4 +112,5 @@
     "extends": "react-app"
   },
   "proxy": "https://api.douban.com"
+  ,"homepage": "http://ss707494.github.io/react-app-ss"
 }
