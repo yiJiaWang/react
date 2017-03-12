@@ -6,6 +6,7 @@ import './style.scss'
 import {handleClassForAsync} from '../../../store/reducers'
 import {name, reducer, actions} from './action';
 import Head from '../../../components/Head'
+import FlatButton from 'material-ui/FlatButton';
 
 class Jigsaw extends Component {
 
@@ -25,7 +26,8 @@ class Jigsaw extends Component {
 
 	render() {
 		const props = this.props,
-			{data, msg} = props.jigsaw.toJSON()
+			{data, msg} = props.jigsaw.toJSON(),
+			{getAnswer} = props.actions
 		return (
 			<div>
 				<Head title="Jigsaw" />
@@ -38,6 +40,9 @@ class Jigsaw extends Component {
 							</div>))
 						}
 					</main>
+					<div>
+						<FlatButton onClick={getAnswer}>butn</FlatButton>
+					</div>
 				</div>
 			</div>
 		)
