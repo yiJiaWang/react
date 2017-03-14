@@ -22,7 +22,7 @@ const baseData = [
 ]
 
 const _initMap = map => walls => {
-  let res = []
+  let res = map
   walls.map(n => {
     map[n] = []
     res = map.map(e => {
@@ -32,11 +32,46 @@ const _initMap = map => walls => {
   return res
 }
 
-const searchPath = ({map, start, end}) => {
-
-  return []
+const searchPath = ({map, start, end, path = [], flag = []}) => {
+	const deal = (path, start) => {
+		let res = [start],
+			hand = start
+		while (path[hand] !== hand) {
+			const pre = path[hand];
+			res[res.length] = pre
+			hand = pre
+		}
+		return res
+	}
+	if (!Array.isArray(start)) {
+		path[start] = start
+		flag[start] = 1
+		if (start === end) {
+			return deal(path, start)
+		}
+		start = [start]
+	}
+	let index = -1,
+		length = start.length,
+		_start = []
+	while (++index < length) {
+		const startI = start[index];
+		if (startI === end) {
+			return deal(path, startI)
+		}
+		map[startI].map(e => {
+			if(!flag[e]) {
+				flag[e] = 1
+				path[e] = startI
+				_start[_start.length] = e
+			}
+		})
+	}
+  return searchPath({map, start: _start, end, path, flag})
 }
 
 export const test = () => {
-  const s = _initMap(baseData)();
+  const s = _initMap(baseData)([1]);
+  const searchPath2 = searchPath({map: baseData, start: 0, end: 7});
+  debugger
 }

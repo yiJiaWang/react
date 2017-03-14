@@ -14,7 +14,7 @@ export const _createStore = (initialState = initState) => {
   // ======================================================
   const middleware = [rx_promise]
 
-	if (window.IS_PRO !== 1) {
+	if (0 && window.IS_PRO !== 1) {
 		// 输出日志
 		const logger = createLogger({
 			stateTransformer: store => store.toJSON(),
