@@ -127,10 +127,9 @@ const _findPath = (data) => {
 	}
 }
 
+import {test} from './searchPath'
 export const operate = s => {
-	const findXY = _.some([1, 2], e => e === 2);
-
-	debugger
+  test();
 
 	return []
 }
