@@ -2,6 +2,7 @@
  * Created by Administrator on 3/11.
  */
 import _ from 'lodash'
+import {getDir} from './searchPath'
 
 /**
  * 拼图游戏算法
@@ -89,6 +90,17 @@ const _move_arr = (arr, s) => {
   return _s
 }
 
+// 查找节点
+const _findXY = (s, n) => {
+  let res = ''
+  s.toJSON().data.forEach((e1, i1) => {
+    e1.forEach((e, i) => {
+      if (e === n) res = i1 * 3 + i
+    })
+  })
+  return res
+}
+
 const _moveNumActions = {
   up: (s, num, walls = []) => {
     const _objNum = _findXY(s, num)
@@ -138,19 +150,6 @@ const _moveNumActions = {
     res[res.length] = 'right'
     return res
   },
-}
-
-import {getDir} from './searchPath'
-
-// 查找节点
-const _findXY = (s, n) => {
-  let res = ''
-  s.toJSON().data.forEach((e1, i1) => {
-    e1.forEach((e, i) => {
-      if (e === n) res = i1 * 3 + i
-    })
-  })
-  return res
 }
 
 const _moveNum = ({state, res}) => (n, target, walls) => {
@@ -211,7 +210,4 @@ export const getAnswer = s => { // 核心步骤
 
   return _params.res
 }
-
-
-
 
