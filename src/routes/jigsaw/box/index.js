@@ -44,7 +44,7 @@ class Jigsaw extends Component {
 					</main>
 					<div>
             <FlatButton onClick={back} icon={<ArrowBack/>}></FlatButton>
-						<FlatButton onClick={getAnswer}>Answer</FlatButton>
+						<FlatButton onClick={getAnswer}>Get Answer</FlatButton>
             <FlatButton onClick={next} icon={<ArrowForward/>}></FlatButton>
 					</div>
           <article styleName="ansBox">
