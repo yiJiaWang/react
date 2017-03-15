@@ -169,38 +169,42 @@ export const getAnswer = s => { // 核心步骤
   }, walls = []
   // 1. 将1移至左上角
   _params = _moveNum(_params)(1, 0, walls)
-  // 2. 将2移至右上角(2) 2 -> 2
-  walls = [0]
-  _params = _moveNum(_params)(2, 2, walls)
-  // 特殊判断 此时有可能3在2的位置 需特殊对待
-  if (_findXY(_params.state, 3) === 1 || (_findXY(_params.state, 3) === 4 && _findXY(_params.state, '') === 1)) {
-    // 3 -> 7
-    _params = _moveNum(_params)(3, 7, walls)
-    // 2 -> 2
-    _params = _moveNum(_params)(2, 2, walls)
-  }
-  // 3 -> 5
-  _params = _moveNum(_params)(3, 5, [0, 2])
-  // 2 -> 1
-  _params = _moveNum(_params)(2, 1, [0, 5])
-  // 3 -> 2
-  _params = _moveNum(_params)(3, 2, [0, 1])
-  walls = [0, 1, 2]
-  // 4 -> 6
-  _params = _moveNum(_params)(4, 6, walls)
-  // 特殊判断
-  if (_findXY(_params.state, 7) === 3 || (_findXY(_params.state, 7) === 4 && _findXY(_params.state, '') === 3)) {
-    // 7 -> 5
-    _params = _moveNum(_params)(7, 5, walls)
-    // 4 -> 6
-    _params = _moveNum(_params)(4, 6, walls)
-  }
-  // 7 -> 7
-  _params = _moveNum(_params)(7, 7, [0, 1, 2, 6])
-  // 4 -> 3
-  _params = _moveNum(_params)(4, 3, [0, 1, 2, 7])
-  // 7 -> 6
-  _params = _moveNum(_params)(7, 6, [0, 1, 2, 3])
+	if (_findXY(_params.state, 2) !== 1 || _findXY(_params.state, 3) !== 2) {
+		// 2. 将2移至右上角(2) 2 -> 2
+		walls = [0]
+		_params = _moveNum(_params)(2, 2, walls)
+		// 特殊判断 此时有可能3在2的位置 需特殊对待
+		if (_findXY(_params.state, 3) === 1 || (_findXY(_params.state, 3) === 4 && _findXY(_params.state, '') === 1)) {
+			// 3 -> 7
+			_params = _moveNum(_params)(3, 7, walls)
+			// 2 -> 2
+			_params = _moveNum(_params)(2, 2, walls)
+		}
+		// 3 -> 5
+		_params = _moveNum(_params)(3, 5, [0, 2])
+		// 2 -> 1
+		_params = _moveNum(_params)(2, 1, [0, 5])
+		// 3 -> 2
+		_params = _moveNum(_params)(3, 2, [0, 1])
+	}
+	if (_findXY(_params.state, 4) !== 3 || _findXY(_params.state, 7) !== 6) {
+		walls = [0, 1, 2]
+		// 4 -> 6
+		_params = _moveNum(_params)(4, 6, walls)
+		// 特殊判断
+		if (_findXY(_params.state, 7) === 3 || (_findXY(_params.state, 7) === 4 && _findXY(_params.state, '') === 3)) {
+			// 7 -> 5
+			_params = _moveNum(_params)(7, 5, walls)
+			// 4 -> 6
+			_params = _moveNum(_params)(4, 6, walls)
+		}
+		// 7 -> 7
+		_params = _moveNum(_params)(7, 7, [0, 1, 2, 6])
+		// 4 -> 3
+		_params = _moveNum(_params)(4, 3, [0, 1, 2, 7])
+		// 7 -> 6
+		_params = _moveNum(_params)(7, 6, [0, 1, 2, 3])
+	}
   // 5 -> 4
   _params = _moveNum(_params)(5, 4, [0, 1, 2, 3, 6])
   // 6 -> 5
