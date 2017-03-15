@@ -31,10 +31,14 @@ $width : 20rem;
 }
 
 @mixin ans {
-  span {
-    margin: .5rem;
-  }
+  margin: .5rem;
+  width: 10%;
 }
+.ansBox {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .answer {
   @include ans;
 }
@@ -42,4 +46,5 @@ $width : 20rem;
   @include ans;
   color: #ff4b54;
 }
+
 

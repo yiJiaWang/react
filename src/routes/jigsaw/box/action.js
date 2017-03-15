@@ -4,7 +4,7 @@
 import {createActions, handleActions} from 'redux-actions'
 import Immutable from 'immutable';
 import _ from 'lodash'
-import {_move, getAnswer} from './path'
+import {_move, getAnswer, reversion} from './path'
 
 export const name = 'jigsaw'
 
@@ -50,28 +50,20 @@ export const actions = createActions({},
 export const reducer = handleActions({
   [CHANGE_OPTION]: (s, {payload:{key = '-1', value}}) => s.mergeIn([key], value),
   [MOVE]: (s, {payload}) => _moveByKey(payload) ? _move[_keyToDir[payload]](s) : s,
-  [GET_ANSWER]: (s, {payload}) => s.mergeIn(['answer'], getAnswer(s)),
+  [GET_ANSWER]: (s, {payload}) => s.setIn(['answer'], Immutable.List(getAnswer(s))).update('doneAns', e => e.clear()),
   [NEXT]: (s, a) => {
     const oper = s.getIn(['answer', 0])
     if (_move[oper]) {
       return _move[oper](s).updateIn(['doneAns'], e => e.push(oper)).updateIn(['answer'], e => e.shift())
     } else {
-      console.log('操作不合法')
       return s
     }
   },
   [BACK]: (s, a) => {
-    const _re = {
-        'up': 'down',
-      'down': 'up',
-      'right': 'left',
-      'left': 'right'
-      },
-      oper = s.getIn(['doneAns', -1]);
-    if (_move[_re[oper]]) {
-      return _move[_re[oper]](s).updateIn(['answer'], e => e.unshift(oper)).updateIn(['doneAns'], e => e.pop())
+    const oper = s.getIn(['doneAns', -1]);
+    if (_move[reversion[oper]]) {
+      return _move[reversion[oper]](s).updateIn(['answer'], e => e.unshift(oper)).updateIn(['doneAns'], e => e.pop())
     } else {
-      console.log('操作不合法')
       return s
     }
   }

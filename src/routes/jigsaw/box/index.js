@@ -47,13 +47,9 @@ class Jigsaw extends Component {
 						<FlatButton onClick={getAnswer}>Answer</FlatButton>
             <FlatButton onClick={next} icon={<ArrowForward/>}></FlatButton>
 					</div>
-          <article>
-            <span styleName="doneAns">
-              {doneAns.map((e, i) => (<span key={i}>{e}</span>))}
-            </span>
-            <span styleName="answer">
-              {answer.map((e, i) => (<span key={i}>{e}</span>))}
-            </span>
+          <article styleName="ansBox">
+            {doneAns.map((e, i) => (<span styleName="doneAns" key={i}>{e}</span>))}
+            {answer.map((e, i) => (<span styleName="answer" key={i}>{e}</span>))}
           </article>
 				</div>
 			</div>
