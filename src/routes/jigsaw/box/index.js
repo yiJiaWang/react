@@ -4,9 +4,11 @@
 import React, {Component} from 'react'
 import './style.scss'
 import {handleClassForAsync} from '../../../store/reducers'
-import {name, reducer, actions} from './action';
+import {name, reducer, actions} from './action'
 import Head from '../../../components/Head'
-import FlatButton from 'material-ui/FlatButton';
+import FlatButton from 'material-ui/FlatButton'
+import ArrowForward from 'material-ui/svg-icons/navigation/arrow-forward'
+import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back'
 
 class Jigsaw extends Component {
 
@@ -26,8 +28,8 @@ class Jigsaw extends Component {
 
 	render() {
 		const props = this.props,
-			{data, msg} = props.jigsaw.toJSON(),
-			{getAnswer} = props.actions
+			{data, msg, answer, doneAns} = props.jigsaw.toJSON(),
+			{getAnswer, next, back} = props.actions
 		return (
 			<div>
 				<Head title="Jigsaw" />
@@ -41,8 +43,18 @@ class Jigsaw extends Component {
 						}
 					</main>
 					<div>
-						<FlatButton onClick={getAnswer}>butn</FlatButton>
+            <FlatButton onClick={back} icon={<ArrowBack/>}></FlatButton>
+						<FlatButton onClick={getAnswer}>Answer</FlatButton>
+            <FlatButton onClick={next} icon={<ArrowForward/>}></FlatButton>
 					</div>
+          <article>
+            <span styleName="doneAns">
+              {doneAns.map((e, i) => (<span key={i}>{e}</span>))}
+            </span>
+            <span styleName="answer">
+              {answer.map((e, i) => (<span key={i}>{e}</span>))}
+            </span>
+          </article>
 				</div>
 			</div>
 		)

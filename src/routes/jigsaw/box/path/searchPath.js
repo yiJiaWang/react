@@ -22,10 +22,10 @@ const baseData = [
 ]
 
 const _initMap = map => walls => {
-  let res = map
-  walls.map(n => {
-    map[n] = []
-    res = map.map(e => {
+  let res = [...map]
+  walls.forEach(n => {
+    res[n] = []
+    res = res.map(e => {
       return _.filter(e, e2 => e2 !== n)
     })
   })
@@ -59,7 +59,7 @@ const searchPath = ({map, start, end, path = [], flag = []}) => {
 		if (startI === end) {
 			return deal(path, startI)
 		}
-		map[startI].map(e => {
+		map[startI].forEach(e => {
 			if(!flag[e]) {
 				flag[e] = 1
 				path[e] = startI
@@ -70,8 +70,25 @@ const searchPath = ({map, start, end, path = [], flag = []}) => {
   return searchPath({map, start: _start, end, path, flag})
 }
 
-export const test = () => {
-  const s = _initMap(baseData)([1]);
-  const searchPath2 = searchPath({map: baseData, start: 0, end: 7});
-  debugger
+const pathToDir = path => {
+  const res = []
+  _.forEachRight(path, (e, i, o) => {
+    if(!i) return
+    const _diff = o[i-1] - e,
+      _diffToDir = {
+        '3': 'up',
+        '-3' : 'down',
+        '1': 'left',
+        '-1' : 'right'
+      }
+    res[res.length] = _diffToDir[_diff];
+  })
+  return res
 }
+
+export const test = () => {
+  const searchPath2 = _.flowRight(pathToDir, searchPath)({map: baseData, start: 2, end: 0});
+  return searchPath2
+}
+
+export const getDir = (walls, map = baseData) => (start, end) => _.flowRight(pathToDir, searchPath)({map: _initMap(map)(walls), start, end})

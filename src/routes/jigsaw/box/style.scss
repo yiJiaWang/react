@@ -30,7 +30,16 @@ $width : 20rem;
   }
 }
 
-
-.canv {
-
+@mixin ans {
+  span {
+    margin: .5rem;
+  }
 }
+.answer {
+  @include ans;
+}
+.doneAns {
+  @include ans;
+  color: #ff4b54;
+}
+
