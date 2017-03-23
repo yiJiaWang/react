@@ -4,6 +4,7 @@ import {Link} from 'react-router'
 import './Home.scss'
 import Head from '../Head'
 import RaisedButton from 'material-ui/RaisedButton';
+import ForkMe from '../ForkMe'
 
 /**
  * 首页
@@ -24,7 +25,7 @@ class Home extends Component {
             <RaisedButton label="拼图 demo" primary={true}/>
           </Link>
         </div>
-        <div styleName="githubUrl"><img alt="" src={require('./mark-github.svg')}/>:<a href="https://github.com/ss707494/react-app-ss">https://github.com/ss707494/react-app-ss</a></div>
+        <ForkMe url="https://github.com/ss707494/react-app-ss"/>
       </div>
     )
   }
