@@ -16,13 +16,13 @@ class Home extends Component {
         <Head title='Welcome' showMenuIconButton={false}/>
         <div style={{paddingTop: 64}} styleName="route">
           <Link styleName='link' to="/film/list">
-            <RaisedButton label="豆瓣电影 DEMO" primary={true}/>
+            <RaisedButton label="豆瓣电影 " primary={true}/>
           </Link>
 					<Link styleName='link' to="/canvas">
-						<RaisedButton label="俄罗斯方块 DEMO" primary={true}/>
+						<RaisedButton label="俄罗斯方块 " primary={true}/>
 					</Link>
           <Link styleName='link' to="/jigsaw">
-            <RaisedButton label="拼图 demo" primary={true}/>
+            <RaisedButton label="拼图 " primary={true}/>
           </Link>
         </div>
         <ForkMe url="https://github.com/ss707494/react-app-ss"/>
