@@ -9,6 +9,8 @@ import Head from '../../../components/Head'
 import FlatButton from 'material-ui/FlatButton'
 import ArrowForward from 'material-ui/svg-icons/navigation/arrow-forward'
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back'
+import ArrowDown from 'material-ui/svg-icons/navigation/arrow-downward'
+import ArrowUp from 'material-ui/svg-icons/navigation/arrow-upward'
 
 class Jigsaw extends Component {
 
@@ -29,7 +31,7 @@ class Jigsaw extends Component {
 	render() {
 		const props = this.props,
 			{data, msg, answer, doneAns} = props.jigsaw.toJSON(),
-			{getAnswer, next, back} = props.actions
+			{getAnswer, next, back, move} = props.actions
 		return (
 			<div>
 				<Head title="Jigsaw" />
@@ -42,6 +44,12 @@ class Jigsaw extends Component {
 							</div>))
 						}
 					</main>
+					<div>
+						<FlatButton onClick={move.bind(this, 38)} icon={(<ArrowUp />)}></FlatButton>
+						<FlatButton onClick={move.bind(this, 37)} icon={(<ArrowBack />)}></FlatButton>
+						<FlatButton onClick={move.bind(this, 40)} icon={(<ArrowDown />)}></FlatButton>
+						<FlatButton onClick={move.bind(this, 39)} icon={(<ArrowForward />)}></FlatButton>
+					</div>
 					<div>
             <FlatButton onClick={back} icon={<ArrowBack/>}></FlatButton>
 						<FlatButton onClick={getAnswer}>Get Answer</FlatButton>

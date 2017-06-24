@@ -24,7 +24,10 @@ const animate = _.curry((context, box) => {
             run(box)
             if (!box.stop) {
                 setTimeout(x => _move(box), config.hz)
+            }else {
+                alert('Game Over -_- ')
             }
+
         }
         _draw(box)
         _move(box)
