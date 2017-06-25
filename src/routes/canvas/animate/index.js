@@ -25,7 +25,7 @@ const animate = _.curry((context, box) => {
             if (!box.stop) {
                 setTimeout(x => _move(box), config.hz)
             }else {
-                alert('Game Over -_- ')
+                if (location.href.indexOf('canvas') !== -1) alert('Game Over -_- ')
             }
 
         }
