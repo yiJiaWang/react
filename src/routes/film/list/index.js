@@ -51,6 +51,7 @@ class FilmList extends Component {
       {actions} = props;
     return async e => {
       actions.showLoading(true)
+      if (!params.start) window.scrollTo(0,0)
       await actions[api_type_const[method].method](params || {start: props.movieList.get('start')})
       actions.showLoading(false)
     }

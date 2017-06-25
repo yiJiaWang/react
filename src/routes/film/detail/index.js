@@ -29,7 +29,7 @@ class FilmDetail extends Component {
 				: <div styleName="detail">
 					<main styleName="mainTop">
 						<div styleName="img">
-							<img src={data.images.medium} alt=""/>
+							<img src={data.images.medium || ''} alt=""/>
 						</div>
 						<div styleName='info'>
 							<div><RateStar rate={data.rating.average}/><span style={{color: '#f56d4c'}}>{data.rating.average}</span>
@@ -45,8 +45,8 @@ class FilmDetail extends Component {
 					</Paper>
 					<div>
 						{data.casts.map(e => (
-							<Paper key={e.id} styleName="casts">
-								<div styleName="img"><img alt="" src={e.avatars.medium}/></div>
+							<Paper key={e.id + e.name} styleName="casts">
+								<div styleName="img"><img alt="" src={e.avatars && e.avatars.medium}/></div>
 								<div styleName="info">
 									<div >{e.name}</div>
 								</div>
