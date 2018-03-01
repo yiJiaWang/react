@@ -10,6 +10,7 @@ export const createRoutes = (store) => ({
 		require('./film').default(store),
 		require('./canvas').default(store),
 		require('./jigsaw').default(store),
+		require('./flappybird').default(store),
 		require('./redirect').default()
 	]
 })

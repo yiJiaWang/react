@@ -24,6 +24,9 @@ class Home extends Component {
           <Link styleName='link' to="/jigsaw">
             <RaisedButton label="拼图 " primary={true}/>
           </Link>
+          <Link styleName='link' to="/flappybird">
+            <RaisedButton label="Flappybird " primary={true}/>
+          </Link>
         </div>
         <ForkMe url="https://github.com/ss707494/react-app-ss"/>
       </div>
