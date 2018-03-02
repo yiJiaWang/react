@@ -40,7 +40,7 @@ const main = _ => {
 }
 
 const bindEvent = () => {
-  document.getElementById('canv_f').addEventListener('touchstart', e => {
+  document.getElementById('butten').addEventListener('click', e => {
     e.preventDefault()
     if (data.state === 2 || data.state === 0) {
       window.cancelAnimationFrame(aniId)

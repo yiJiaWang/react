@@ -5,6 +5,9 @@ import React, {Component} from 'react'
 import './style.scss'
 import Head from '../../components/Head'
 import Main2 from './main.js'
+import FlatButton from 'material-ui/FlatButton';
+import RotateRight from 'material-ui/svg-icons/image/rotate-right'
+
 
 class Canvas extends Component {
 
@@ -31,6 +34,9 @@ class Canvas extends Component {
 				<div style={{paddingTop: 64}} styleName="box">
 					<canvas styleName="canv" id="canv_f"></canvas>
 				</div>
+        <div>
+          <FlatButton style={{margin: 'auto', display: 'block'}} id="butten" icon={(<RotateRight />)}></FlatButton>
+        </div>
 			</div>
 		)
 	}
