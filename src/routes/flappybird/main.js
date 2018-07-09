@@ -40,6 +40,33 @@ const main = _ => {
 }
 
 const bindEvent = () => {
+  const dealEvent = (e) => {
+    e.preventDefault()
+    if (data.state === 2 || data.state === 0) {
+      window.cancelAnimationFrame(aniId)
+      data = ({...adata, state: 1});
+      main();
+      return
+    }
+    eventsL = touchHandler(e, data)
+  }
+  const canvas = document.getElementById('canv_f');
+  let _isTouchDevice = false
+  if (window.navigator.msPointerEnabled || 'ontouchstart' in window)
+    _isTouchDevice = true;
+  else
+    _isTouchDevice = false;
+  if (_isTouchDevice == false) {
+    document.addEventListener('keydown', function (event) {
+      if (event.keyCode == 32) {
+        dealEvent(event)
+      }
+    });
+    canvas.addEventListener('click', dealEvent )
+  } else {
+    var evt = window.navigator.msPointerEnabled ? 'MSPointerDown' : 'touchstart';
+    canvas.addEventListener(evt, dealEvent);
+  }
   document.getElementById('butten').addEventListener('click', e => {
     e.preventDefault()
     if (data.state === 2 || data.state === 0) {

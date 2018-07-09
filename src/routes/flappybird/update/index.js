@@ -12,7 +12,9 @@ const imgUpdate = data => ({...data, imgNum: data.imgNum > 1 ? 0 : data.imgNum +
 
 const __update = {
   bullet: _.flowRight(addInterval(1)(_.flowRight(updateSelf(),  changeRotate, bounce)), addInterval(5, 'img11')(imgUpdate)),
+
   backImg: data => data.x < -getCanvas().width ? ({...data, x: 0}) : _.flowRight(addInterval(1)(updateSelf()))(data),
+
   pipe: (data, _else) => data.x < -data.w ? ({...data, ..._else.initOnePipe({x: 600 - data.w})}) : _.flowRight(addInterval(1)(updateSelf()))(data),
 }
 
