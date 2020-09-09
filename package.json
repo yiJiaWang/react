@@ -76,7 +76,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -r git@github.com:ss707494/react-app-ss.git"
+    "deploy": "gh-pages -d build -r git@github.com/yiJiaWang/react.git"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -111,5 +111,5 @@
     "extends": "react-app"
   },
   "proxy": "https://api.douban.com"
-  ,"homepage": "https://github.com/yiJiaWang/react.git"
+  ,"homepage": ""
 }

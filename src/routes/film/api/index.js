@@ -25,7 +25,8 @@ const getFromFile = (params) => data => new Promise((resolve) => {
 const _handleApi = (name) => (data, routeId, option) => (window.IS_PRO
 	// || 1
 	&& 0
-) ? getFromFile(name)(data) : get('/v2/movie/' + name + (routeId ? '/' + routeId : '') + ((data) ? '?' + queryString.stringify(data) : ''), option)
+// ) ? getFromFile(name)(data) : get('/v2/movie/' + name + (routeId ? '/' + routeId : '') + ((data) ? '?' + queryString.stringify(data) : ''), option)
+) ? getFromFile(name)(data) : getFromFile(name)(data) //假数据
 
 const apiList = ['top250', 'coming_soon', 'in_theaters', 'search', 'subject']
 const api = _.reduce(apiList, (res, e, i) => {

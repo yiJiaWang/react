@@ -1,7 +1,7 @@
 
 # React-app
 
-demo : [https://ss707494.github.io/react-app-ss](https://ss707494.github.io/react-app-ss)
+demo : [https://github.com/yiJiaWang/react.git](https://github.com/yiJiaWang/react.git)
 
  * 一个基于React的demo
 
@@ -13,7 +13,7 @@ demo : [https://ss707494.github.io/react-app-ss](https://ss707494.github.io/reac
 
 ## 运行
 ```
-$ git clone https://github.com/ss707494/react-app-ss.git
+$ git clone https://github.com/yiJiaWang/react.git
 $ cd react-app-ss
 $ npm install 
 $ npm run start
