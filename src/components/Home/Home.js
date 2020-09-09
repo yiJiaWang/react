@@ -28,7 +28,7 @@ class Home extends Component {
             <RaisedButton label="Flappybird " primary={true}/>
           </Link>
         </div>
-        <ForkMe url="https://github.com/ss707494/react-app-ss"/>
+        <ForkMe url="https://github.com/yiJiaWang/react.git"/>
       </div>
     )
   }
