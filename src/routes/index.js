@@ -1,11 +1,11 @@
 // We only need to import the modules necessary for initial render
-import Home from '../components/Home'
-import Layout from '../components/Layout'
-
+import Home from '../components/Home'//首页
+import Layout from '../components/Layout'//子组件过度
+//原生 route 数组对象
 export const createRoutes = (store) => ({
 	path: '/',
-	component: Layout,
-	indexRoute: Home,
+	component: Layout,//固定写法？？
+	indexRoute: Home,//内置link跳转
 	childRoutes: [
 		require('./film').default(store),
 		require('./canvas').default(store),
