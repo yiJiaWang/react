@@ -7,7 +7,7 @@ import './style/common.scss'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'//页面颜色更鲜艳，动画效果更突出
 import { createHistory} from 'history'
 
-// Needed for onTouchTap yj
+// Needed for onTouchTap yjyijia
 // http://stackoverflow.com/a/34015469/988941
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
